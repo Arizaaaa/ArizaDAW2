@@ -1,0 +1,6 @@
+[Thu Sep 15 18:52:50.145947 2022] [mpm_winnt:notice] [pid 12184:tid 796] AH00455: Apache/2.4.6 (Win32) PHP/5.4.17 configured -- resuming normal operations
+[Thu Sep 15 18:52:50.145947 2022] [mpm_winnt:notice] [pid 12184:tid 796] AH00456: Apache Lounge VC10 Server built: Jul 16 2013 11:15:41
+[Thu Sep 15 18:52:50.145947 2022] [core:notice] [pid 12184:tid 796] AH00094: Command line: 'D:\\DAW2\\ArizaDAW2\\USBWebServer/apache2/bin/httpd_usbwv8.exe -d D:/DAW2/ArizaDAW2/USBWebServer/apache2'
+[Thu Sep 15 18:52:50.155981 2022] [mpm_winnt:notice] [pid 12184:tid 796] AH00418: Parent: Created child process 10688
+[Thu Sep 15 18:52:50.686782 2022] [mpm_winnt:notice] [pid 10688:tid 844] AH00354: Child: Starting 64 worker threads.
+[Thu Sep 15 20:05:33.063601 2022] [:error] [pid 10688:tid 1320] [client ::1:51901] PHP Parse error:  syntax error, unexpected '$edad' (T_VARIABLE) in D:\\DAW2\\ArizaDAW2\\M07 Desarrollo web en entorno servidor\\datos.php on line 24, referer: http://localhost/formulario.html?
