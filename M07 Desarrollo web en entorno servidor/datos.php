@@ -1,28 +1,33 @@
 <?php
 
-$servidor = "localhost";
-$usuario = "root";
-$password = "usbw";
-$bd = "daw2";
+//session_start();
 
-$nombre = $_GET['nombre'];
-$apellido = $_GET['apellido'];
-$edad = $_GET['edad'];
 
-$con = mysqli_connect($servidor, $usuario, $password, $bd);
 
-if(!$con) {
+$nombre = $_GET['Nombre'];
+$edad = $_GET['Edad'];
+$apellidos = $_GET['Apellidos'];
 
-    die("No se ha podido establecer una conexión_".mysqli_connect_error()."<br>");
+//$_SESSION["nick_logueado"]=$nombre;
 
-} else {
+echo "El nombre es ".$nombre." la edad es ".$edad." y los apellidos son ".$apellidos;
 
-    mysqli_set_charset($con, "utf8");
-    echo "Se ha establecido correctamente la conexión<br>";
+$servidor="localhost";
+$usuario="root";
+$password="usbw";
+$bd="daw2";
 
-    $sql = "INSERT INTO `alumnos`(`id`, `nombre`, `apellidos`, `edad`) 
-    VALUES (NULL, '$nombre', '$apellido', $edad)";
+$con=mysqli_connect($servidor,$usuario,$password,$bd);
 
+if(!$con){
+    die("No se ha podido realizar la conexión_".mysqli_connect_error()."<br>");
+}else{
+    mysqli_set_charset($con,"utf8");
+    echo "Se ha establecido correctamente la conexión a la base de datos";
+
+    $sql="INSERT INTO `alumnos`(`id`, `nombre`, `apellidos`, `edad`) 
+    VALUES (NULL,'$nombre','$apellidos',$edad)";
+    
     $consulta=mysqli_query($con,$sql);
 
     if(!$consulta){
@@ -30,11 +35,6 @@ if(!$con) {
     }else{
         echo "El insert se ha realizado correctamente";
     }
-
-}
-
-echo "El nombre es ".$nombre." ".$apellido." y su edad es ".$edad.".";
-
 ?>
 
 <!DOCTYPE html>
@@ -46,27 +46,29 @@ echo "El nombre es ".$nombre." ".$apellido." y su edad es ".$edad.".";
     <title>Document</title>
 </head>
 <body>
-    <form>
 
-        <table>
-        <?php
+    <table>
+    <?php
+        $sql2="SELECT * FROM `alumnos`";
+        $consulta=mysqli_query($con,$sql2);
+        while($fila=$consulta->fetch_assoc()){
+            echo "<tr>";
+            echo "<td>".$fila["id"]."</td>";
+            echo "<td>".$fila["nombre"]."</td>";
+            echo "<td>".$fila["apellidos"]."</td>";
+            echo "<td>".$fila["edad"]."</td>";
+            echo "</tr>";
+        }
+    ?>
+    </table>
 
-            $sql2 = "SELECT * FROM `alumnos`";
-            $consulta = mysqli_query($con, $sql2);
-            while($fila = $consulta -> fetch_assoc()) {
+    <form action="/logout.php" method="post">
 
-                echo "<tr>";
-                echo "<td>".$fila["id"]."</td>";
-                echo "<td>".$fila["nombre"]."</td>";
-                echo "<td>".$fila["apellidos"]."</td>";
-                echo "<td>".$fila["edad"]."</td>";
-                echo "<tr>";
-
-            }
-
-        ?>
-        </table>
-
-    </form>
+    <input type="submit" value="Enviar">
+</form>
 </body>
 </html>
+
+<?php
+}
+?>
