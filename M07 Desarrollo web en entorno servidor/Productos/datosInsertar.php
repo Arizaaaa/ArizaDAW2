@@ -1,3 +1,27 @@
+<?php
+
+$nombre = $_GET['nombre'];
+$descripcion = $_GET['descripcion'];
+$cantidad = $_GET['cantidad'];
+$precio = $_GET['precio'];
+
+$servidor="localhost";
+$usuario="root";
+$password="usbw";
+$bd="productos";
+
+$con=mysqli_connect($servidor,$usuario,$password,$bd);
+
+if($con){
+    mysqli_set_charset($con,"utf8");
+
+    $sql="INSERT INTO `productos`(`id`, `nombre`, `descripcion`, `cantidad`, `precio`) 
+    VALUES (NULL,'$nombre','$descripcion',$cantidad, $precio)";
+    
+    $consulta=mysqli_query($con,$sql);
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,7 +33,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
-    <title>Actualizar productos</title>
+    <title>Vista de productos</title>
 </head>
 <body>
 
@@ -41,17 +65,27 @@
           </div>
         </div>
       </nav>
-    
-    <div class="login-box">
-        <h2>Actualizar</h2>
-        <form action="/datosActualizar.php" method="get">
-          <div class="user-box">
-            <input type="text" name="id" required="">
-            <label>ID</label>
-          </div>
-          <button type="submit" class="btn btn-outline-primary">BUSCAR</button>
-        </form>
+    <div>
+      <table class="table table-dark table-borderless">
+    <?php
+        echo "<td>NOMBRE</td>";
+        echo "<td>DESCRIPCIÓN</td>";
+        echo "<td>CANTIDAD</td>";
+        echo "<td>PRECIO</td>";
+        echo "<tr>";
+        echo "<td>".$nombre."</td>";
+        echo "<td>".$descripcion."</td>";
+        echo "<td>".$cantidad."</td>";
+        echo "<td>".$precio."</td>";
+        echo "</tr>";
+    ?>
+    </table>
+    <button class="btn btn-outline-primary"><a href="InsertarProductos.html">ATRÁS</a></button>
     </div>
-
 </body>
 </html>
+
+
+<?php
+}
+?>

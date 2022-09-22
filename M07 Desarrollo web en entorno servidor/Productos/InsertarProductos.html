@@ -28,7 +28,7 @@
             <a class="nav-link active" aria-current="page" href="ActualizarProductos.html">Actualizar</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="VerProductos.html">Ver</a>
+            <a class="nav-link active" aria-current="page" href="BuscarProductos.html">Buscar</a>
           </li>
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="BorrarProductos.html">Borrar</a>
@@ -42,28 +42,28 @@
     </div>
   </nav>
     
-    <div class="login-box">
-        <h2>Insertar</h2>
-        <form action="/datos.php" method="get">
-          <div class="user-box">
-            <input type="text" name="nombre" required="">
-            <label>Nombre</label>
-          </div>
-          <div class="user-box">
-            <input type="text" name="descripcion" required="">
-            <label>Descripción</label>
-          </div>
-          <div class="user-box">
-            <input type="number" name="cantidad" required="">
-            <label>Cantidad</label>
-          </div>
-          <div class="user-box">
-            <input type="number" name="precio" required="">
-            <label>Precio</label>
-          </div>
-          <button class="button" type="submit">Hecho</button>
-      </form>
-    </div>
+  <div class="login-box">
+    <h2>Insertar</h2>
+    <form action="/datosInsertar.php" method="get">
+      <div class="user-box">
+        <input type="text" name="nombre" required="">
+        <label>Nombre</label>
+      </div>
+      <div class="user-box">
+        <input type="text" name="descripcion" required="">
+        <label>Descripción</label>
+      </div>
+      <div class="user-box">
+        <input type="number" name="cantidad" required="">
+        <label>Cantidad</label>
+      </div>
+      <div class="user-box">
+        <input type="number" name="precio" required="">
+        <label>Precio</label>
+      </div>
+      <button type="submit" class="btn btn-outline-primary">INSERTAR</button>
+    </form>
+</div>
 
 </body>
 </html>
