@@ -8,14 +8,14 @@ $precio = $_GET['precio'];
 $servidor="localhost";
 $usuario="root";
 $password="usbw";
-$bd="productos";
+$bd="prod";
 
 $con=mysqli_connect($servidor,$usuario,$password,$bd);
 
 if($con){
     mysqli_set_charset($con,"utf8");
 
-    $sql="INSERT INTO `productos`(`id`, `nombre`, `descripcion`, `cantidad`, `precio`) 
+    $sql="INSERT INTO `prod`(`id`, `nombre`, `descripcion`, `cantidad`, `precio`) 
     VALUES (NULL,'$nombre','$descripcion',$cantidad, $precio)";
     
     $consulta=mysqli_query($con,$sql);

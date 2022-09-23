@@ -1,3 +1,23 @@
+<?php
+
+$id = $_GET['id'];
+
+$servidor="localhost";
+$usuario="root";
+$password="usbw";
+$bd="prod";
+
+$con=mysqli_connect($servidor,$usuario,$password,$bd);
+
+if($con){
+    mysqli_set_charset($con,"utf8");
+
+    $sql="SELECT `nombre`, `descripcion`, `cantidad`, `precio` FROM `prod` WHERE `id` = '$id'";
+    
+    $consulta=mysqli_query($con,$sql);
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,7 +29,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
-    <title>Ver productos</title>
+    <title>Vista de productos</title>
 </head>
 <body>
 
@@ -41,35 +61,31 @@
           </div>
         </div>
       </nav>
-    
-      <div class="login-box">
-        <h2>Ver</h2>
-        <form action="/datos.php" method="get">
-          <div class="user-box">
-            <input type="text" name="id" required="">
-            <label>Nombre</label>
-          </div>
-          <div class="user-box">
-            <input type="text" name="descripcion" required="">
-            <label>Descripción</label>
-          </div>
-          <div class="user-box">
-            <input type="text" name="cantidad" required="">
-            <label>Cantidad</label>
-          </div>
-          <div class="user-box">
-            <input type="text" name="precio" required="">
-            <label>Precio</label>
-          </div>
-          <a id="buscar" href="BuscarProductos.html">
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            BUSCAR MÁS
-          </a>
-        </form>
+    <div>
+      <table class="table table-dark table-borderless">
+    <?php
+        echo "<td>NOMBRE</td>";
+        echo "<td>DESCRIPCIÓN</td>";
+        echo "<td>CANTIDAD</td>";
+        echo "<td>PRECIO</td>";
+        $sql2="SELECT `nombre`, `descripcion`, `cantidad`, `precio` FROM `prod` WHERE `id` = '$id'";
+        $consulta=mysqli_query($con,$sql2);
+        while($fila=$consulta->fetch_assoc()){
+        echo "<tr>";
+        echo "<td>".$fila["nombre"]."</td>";
+        echo "<td>".$fila["descripcion"]."</td>";
+        echo "<td>".$fila["cantidad"]."</td>";
+        echo "<td>".$fila["precio"]."</td>";
+        echo "</tr>";
+      }
+    ?>
+    </table>
+    <button class="btn btn-outline-primary"><a href="BuscarProductos.html">ATRÁS</a></button>
     </div>
-
 </body>
 </html>
+
+
+<?php
+}
+?>

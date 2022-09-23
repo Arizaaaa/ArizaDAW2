@@ -5,14 +5,14 @@ $id = $_GET['id'];
 $servidor="localhost";
 $usuario="root";
 $password="usbw";
-$bd="productos";
+$bd="prod";
 
 $con=mysqli_connect($servidor,$usuario,$password,$bd);
 
 if($con){
     mysqli_set_charset($con,"utf8");
 
-    $sql="DELETE FROM `productos` WHERE `id` = '$id'";
+    $sql="DELETE FROM `prod` WHERE `id` = '$id'";
     
     $consulta=mysqli_query($con,$sql);
 
