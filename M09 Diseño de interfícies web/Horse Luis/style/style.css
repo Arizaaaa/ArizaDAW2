@@ -32,3 +32,27 @@ nav ul li a{
     color: black;
     font-size: 1.5rem;
 }
+
+.home{
+    display: flex;
+    justify-content: space-evenly;
+    padding-top: 5rem;
+}
+
+.home-img{
+    height: 25rem;
+    width: 40rem;
+}
+
+footer{
+    display: flex;
+    justify-content: center;
+    padding-top: 10rem;
+}
+
+.footer-img{
+    height: 2rem;
+    width: 2rem;
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
+}
