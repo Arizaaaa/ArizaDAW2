@@ -1,0 +1,81 @@
+<div class="card-container">
+  <div class="card">
+    <!-- Aquí va toda la información del character para que se vea en formato Card -->
+    <label for="name" value>Name:</label>
+    <input type="text" [(ngModel)]="serverCharacters[0].name" [disabled]="(serverCharacters[0].editable) ? false : true">
+    <label for="strength">Strength:</label>
+    <input type="text" [(ngModel)]="serverCharacters[0].strength" [disabled]="(serverCharacters[0].editable) ? false : true">
+    <label for="agility">Agility:</label>
+    <input type="text" [(ngModel)]="serverCharacters[0].agility" [disabled]="(serverCharacters[0].editable) ? false : true">
+    <label for="intelligence">Intelligence:</label>
+    <input type="text" [(ngModel)]="serverCharacters[0].intelligence" [disabled]="(serverCharacters[0].editable) ? false : true">
+    <label for="life">Life:</label>
+    <input type="text" [(ngModel)]="serverCharacters[0].life" [disabled]="(serverCharacters[0].editable) ? false : true">
+    <input type="button" (click) = "edit(serverCharacters[0])" value="{{serverCharacters[0].button}}"/>
+  </div>
+
+  <div class="card">
+    <!-- Aquí va toda la información del character para que se vea en formato Card -->
+    <label for="name" value>Name:</label>
+    <input type="text" [(ngModel)]="serverCharacters[1].name" [disabled]="(serverCharacters[1].editable) ? false : true">
+    <label for="strength">Strength:</label>
+    <input type="text" [(ngModel)]="serverCharacters[1].strength" [disabled]="(serverCharacters[1].editable) ? false : true">
+    <label for="agility">Agility:</label>
+    <input type="text" [(ngModel)]="serverCharacters[1].agility" [disabled]="(serverCharacters[1].editable) ? false : true">
+    <label for="intelligence">Intelligence:</label>
+    <input type="text" [(ngModel)]="serverCharacters[1].intelligence" [disabled]="(serverCharacters[1].editable) ? false : true">
+    <label for="life">Life:</label>
+    <input type="text" [(ngModel)]="serverCharacters[1].life" [disabled]="(serverCharacters[1].editable) ? false : true">
+    <input type="button" (click) = "edit(serverCharacters[1])" value="{{serverCharacters[1].button}}"/>
+  </div>
+
+  <div class="card">
+    <!-- Aquí va toda la información del character para que se vea en formato Card -->
+    <label for="name" value>Name:</label>
+    <input type="text" [(ngModel)]="serverCharacters[2].name" [disabled]="(serverCharacters[2].editable) ? false : true">
+    <label for="strength">Strength:</label>
+    <input type="text" [(ngModel)]="serverCharacters[2].strength" [disabled]="(serverCharacters[2].editable) ? false : true">
+    <label for="agility">Agility:</label>
+    <input type="text" [(ngModel)]="serverCharacters[2].agility" [disabled]="(serverCharacters[2].editable) ? false : true">
+    <label for="intelligence">Intelligence:</label>
+    <input type="text" [(ngModel)]="serverCharacters[2].intelligence" [disabled]="(serverCharacters[2].editable) ? false : true">
+    <label for="life">Life:</label>
+    <input type="text" [(ngModel)]="serverCharacters[2].life" [disabled]="(serverCharacters[2].editable) ? false : true">
+    <input type="button" (click) = "edit(serverCharacters[2])" value="{{serverCharacters[2].button}}"/>
+  </div>
+
+  <div class="card">
+    <!-- Aquí va toda la información del character para que se vea en formato Card -->
+    <label for="name" value>Name:</label>
+    <input type="text" [(ngModel)]="serverCharacters[3].name" [disabled]="(serverCharacters[3].editable) ? false : true">
+    <label for="strength">Strength:</label>
+    <input type="text" [(ngModel)]="serverCharacters[3].strength" [disabled]="(serverCharacters[3].editable) ? false : true">
+    <label for="agility">Agility:</label>
+    <input type="text" [(ngModel)]="serverCharacters[3].agility" [disabled]="(serverCharacters[3].editable) ? false : true">
+    <label for="intelligence">Intelligence:</label>
+    <input type="text" [(ngModel)]="serverCharacters[3].intelligence" [disabled]="(serverCharacters[3].editable) ? false : true">
+    <label for="life">Life:</label>
+    <input type="text" [(ngModel)]="serverCharacters[3].life" [disabled]="(serverCharacters[3].editable) ? false : true">
+    <input type="button" (click) = "edit(serverCharacters[3])" value="{{serverCharacters[3].button}}"/>
+  </div>
+
+  <div class="card">
+    <!-- Aquí va toda la información del character para que se vea en formato Card -->
+    <label for="name" value>Name:</label>
+    <input type="text" [(ngModel)]="serverCharacters[4].name" [disabled]="(serverCharacters[4].editable) ? false : true">
+    <label for="strength">Strength:</label>
+    <input type="text" [(ngModel)]="serverCharacters[4].strength" [disabled]="(serverCharacters[4].editable) ? false : true">
+    <label for="agility">Agility:</label>
+    <input type="text" [(ngModel)]="serverCharacters[4].agility" [disabled]="(serverCharacters[4].editable) ? false : true">
+    <label for="intelligence">Intelligence:</label>
+    <input type="text" [(ngModel)]="serverCharacters[4].intelligence" [disabled]="(serverCharacters[4].editable) ? false : true">
+    <label for="life">Life:</label>
+    <input type="text" [(ngModel)]="serverCharacters[4].life" [disabled]="(serverCharacters[4].editable) ? false : true">
+    <input type="button" (click) = "edit(serverCharacters[4])" value="{{serverCharacters[4].button}}"/>
+  </div>
+
+  <!-- Dentro del parágrafo va la información del Character que se está modifcando -->
+  <p></p>
+
+</div>
+
