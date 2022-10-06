@@ -8,7 +8,6 @@ interface Character {
   life: number;
   editable?: boolean;
   button: string;
-  print?: string;
 }
 
 @Component({
@@ -17,6 +16,8 @@ interface Character {
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+
+  mostrar:string = "";
 
   serverCharacters: Character[] = [];
 
@@ -34,7 +35,7 @@ export class AppComponent {
     this.serverCharacters = JSON.parse(serverJson);
   }
 
-  edit(character:Character) {
+  edit(character:Character, mostrar:string):any {
 
     console.log(character.editable);
 
@@ -46,8 +47,8 @@ export class AppComponent {
       character.button = "Save";
     }
 
+    return mostrar  = JSON.stringify("name: " + character.name + ", strength: " + character.strength + ", character.agility: " + character.agility + ", character.intelligence: " + character.intelligence + ", character.life: " + character.life);
+  
   }
-
-
 
 }

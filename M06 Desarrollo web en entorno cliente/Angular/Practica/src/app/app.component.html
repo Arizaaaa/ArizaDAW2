@@ -11,7 +11,7 @@
     <input type="text" [(ngModel)]="serverCharacters[0].intelligence" [disabled]="(serverCharacters[0].editable) ? false : true">
     <label for="life">Life:</label>
     <input type="text" [(ngModel)]="serverCharacters[0].life" [disabled]="(serverCharacters[0].editable) ? false : true">
-    <input type="button" (click) = "edit(serverCharacters[0])" value="{{serverCharacters[0].button}}"/>
+    <input type="button" (click) = "mostrar = edit(serverCharacters[0], mostrar)" value="{{serverCharacters[0].button}}"/>
   </div>
 
   <div class="card">
@@ -26,7 +26,7 @@
     <input type="text" [(ngModel)]="serverCharacters[1].intelligence" [disabled]="(serverCharacters[1].editable) ? false : true">
     <label for="life">Life:</label>
     <input type="text" [(ngModel)]="serverCharacters[1].life" [disabled]="(serverCharacters[1].editable) ? false : true">
-    <input type="button" (click) = "edit(serverCharacters[1])" value="{{serverCharacters[1].button}}"/>
+    <input type="button" (click) = "mostrar = edit(serverCharacters[1], mostrar)" value="{{serverCharacters[1].button}}"/>
   </div>
 
   <div class="card">
@@ -41,7 +41,7 @@
     <input type="text" [(ngModel)]="serverCharacters[2].intelligence" [disabled]="(serverCharacters[2].editable) ? false : true">
     <label for="life">Life:</label>
     <input type="text" [(ngModel)]="serverCharacters[2].life" [disabled]="(serverCharacters[2].editable) ? false : true">
-    <input type="button" (click) = "edit(serverCharacters[2])" value="{{serverCharacters[2].button}}"/>
+    <input type="button" (click) = "mostrar = edit(serverCharacters[2], mostrar)" value="{{serverCharacters[2].button}}"/>
   </div>
 
   <div class="card">
@@ -56,7 +56,7 @@
     <input type="text" [(ngModel)]="serverCharacters[3].intelligence" [disabled]="(serverCharacters[3].editable) ? false : true">
     <label for="life">Life:</label>
     <input type="text" [(ngModel)]="serverCharacters[3].life" [disabled]="(serverCharacters[3].editable) ? false : true">
-    <input type="button" (click) = "edit(serverCharacters[3])" value="{{serverCharacters[3].button}}"/>
+    <input type="button" (click) = "mostrar = edit(serverCharacters[3], mostrar)" value="{{serverCharacters[3].button}}"/>
   </div>
 
   <div class="card">
@@ -71,11 +71,11 @@
     <input type="text" [(ngModel)]="serverCharacters[4].intelligence" [disabled]="(serverCharacters[4].editable) ? false : true">
     <label for="life">Life:</label>
     <input type="text" [(ngModel)]="serverCharacters[4].life" [disabled]="(serverCharacters[4].editable) ? false : true">
-    <input type="button" (click) = "edit(serverCharacters[4])" value="{{serverCharacters[4].button}}"/>
+    <input type="button" (click) = "mostrar = edit(serverCharacters[4], mostrar)" value="{{serverCharacters[4].button}}"/>
   </div>
 
   <!-- Dentro del parágrafo va la información del Character que se está modifcando -->
-  <p></p>
+  <p> {{ mostrar }} </p>
 
 </div>
 
