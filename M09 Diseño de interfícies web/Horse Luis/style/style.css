@@ -8,6 +8,19 @@
     height: 19rem;
 }
 
+#cuerpo{
+    background-color: rgb(50, 50, 50);
+    margin-top: -5px;
+}
+
+#cuerpo nav ul li a{
+    color: aliceblue;
+}
+
+body{
+    background-color: rgb(100, 100, 100);
+}
+
 .logo{
     width: 17rem;
     height: 17rem;
@@ -45,14 +58,47 @@ nav ul li a{
 }
 
 footer{
+    margin-top: 10rem;
+    background-color: rgb(50, 50, 50);
+}
+
+#pedau{
+    padding-top: 15px;
     display: flex;
     justify-content: center;
-    padding-top: 10rem;
+}
+
+#aaa{
+    padding-top: 15px;
+    padding-bottom: 15px;
+    display: flex;
+    justify-content: center;
+    text-decoration: none;
+    color: aliceblue;
 }
 
 .footer-img{
-    height: 2rem;
-    width: 2rem;
+    height: 2.5rem;
+    width: 2.5rem;
     margin-left: 1.5rem;
     margin-right: 1.5rem;
+}
+
+.texto{
+    padding-top: 1rem;
+    padding-left: 5rem;
+    padding-right: 5rem;
+}
+
+.horseLuis h1{
+    display: flex;
+    justify-content: center;
+    align-self: center;
+}
+
+.horseLuis img{
+    margin-left: 33%;
+    margin-bottom: 5rem;
+    width: 37rem;
+    height: 30rem;
 }
