@@ -1,5 +1,6 @@
-<!-- <?php
+<?php
 
+session_start();
 $id = $_GET['id'];
 $nombre = $_GET['nombre'];
 $descripcion = $_GET['descripcion'];
@@ -13,17 +14,59 @@ $bd="prod";
 
 $con=mysqli_connect($servidor,$usuario,$password,$bd);
 
-if($con){
-    mysqli_set_charset($con,"utf8");
+if (isset($_POST['actualizar'])){ actualizar(); }
+elseif (isset($_POST['borrar'])) { borrar(); }
+elseif (isset($_POST['buscar'])) { buscar(); }
 
-    $sql="UPDATE `prod` SET `nombre`='$nombre',`descripcion`='$descripcion',`cantidad`='$cantidad',`precio`='$precio' WHERE `id` = '$id'";
+function actualizar() {
+
+    if($con){
+        mysqli_set_charset($con,"utf8");
     
-    $consulta=mysqli_query($con,$sql);
+        $sql="UPDATE `prod` SET `nombre`='$nombre',`descripcion`='$descripcion',`cantidad`='$cantidad',`precio`='$precio' WHERE `id` = '$id'";
+        
+        $consulta=mysqli_query($con,$sql);
+    
+    }
+
+    ver();
+
+}
+
+function borrar() {
+
+    if($con){
+        mysqli_set_charset($con,"utf8");
+    
+        $sql="DELETE FROM `prod` WHERE `id` = '$id'";
+        
+        $consulta=mysqli_query($con,$sql);
+    }
+
+    ver();
+
+}
+
+function buscar() {
+
+    if($con){
+        mysqli_set_charset($con,"utf8");
+    
+        $sql="SELECT `nombre`, `descripcion`, `cantidad`, `precio` FROM `prod` WHERE `id` = '$id'";
+        
+        $consulta=mysqli_query($con,$sql);
+    }
+
+    ver(true);
+
+}
+
+function ver($_buscar) {
 
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -66,30 +109,46 @@ if($con){
         </div>
       </nav>
     <div>
-    <div>
-      <div>
-        <table class="table table-dark table-borderless">
-          <?php
-            echo "<td>NOMBRE</td>";
-            echo "<td>DESCRIPCIÓN</td>";
-            echo "<td>CANTIDAD</td>";
-            echo "<td>PRECIO</td>";
-            echo "<tr>";
-            echo "<td>".$nombre."</td>";
-            echo "<td>".$descripcion."</td>";
-            echo "<td>".$cantidad."</td>";
-            echo "<td>".$precio."</td>";
-            echo "</tr>";
-          ?>
+      <table class="table table-dark table-borderless">
+            <?php
+                if ($_buscar == true) {
+                    echo "<td>NOMBRE</td>";
+                    echo "<td>DESCRIPCIÓN</td>";
+                    echo "<td>CANTIDAD</td>";
+                    echo "<td>PRECIO</td>";
+                    $sql2="SELECT `nombre`, `descripcion`, `cantidad`, `precio` FROM `prod` WHERE `id` = '$id'";
+                    $consulta=mysqli_query($con,$sql2);
+                    while($fila=$consulta->fetch_assoc()){
+                    echo "<tr>";
+                    echo "<td>".$fila["nombre"]."</td>";
+                    echo "<td>".$fila["descripcion"]."</td>";
+                    echo "<td>".$fila["cantidad"]."</td>";
+                    echo "<td>".$fila["precio"]."</td>";
+                    echo "</tr>";
+                    }
+                } else {
+                    echo "<td>ID</td>";
+                    echo "<td>NOMBRE</td>";
+                    echo "<td>DESCRIPCIÓN</td>";
+                    echo "<td>CANTIDAD</td>";
+                    echo "<td>PRECIO</td>";
+                    $sql2="SELECT * FROM `prod`";
+                    $consulta=mysqli_query($con,$sql2);
+                    while($fila=$consulta->fetch_assoc()){
+                        echo "<tr>";
+                        echo "<td>".$fila["id"]."</td>";
+                        echo "<td>".$fila["nombre"]."</td>";
+                        echo "<td>".$fila["descripcion"]."</td>";
+                        echo "<td>".$fila["cantidad"]."</td>";
+                        echo "<td>".$fila["precio"]."</td>";
+                        echo "</tr>";
+                    }
+                }
+            ?>
         </table>
-    <button class="btn btn-outline-primary"><a href="ActualizarProductos.html">ATRÁS</a></button>
     </div>
-    </div>
-    
 </body>
 </html>
-
-
 <?php
 }
-?> -->
+?>
