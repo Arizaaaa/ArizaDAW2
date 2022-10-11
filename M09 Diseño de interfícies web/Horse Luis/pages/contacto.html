@@ -34,31 +34,50 @@
 
     </div>
 
-    <form action="">
-
-        <label for="nombre">Nombre completo: </label>
-        <input type="text"><br><br>
-
-        <label for="email">Correo electrónico: </label>
-        <input type="email"><br><br>
-
-        <label for="asunto">Asunto: </label>
-        <input type="text"><br><br>
-
-        <label for="desc">Descripción: </label>
-        <textarea name="desc" id="" cols="30" rows="10"></textarea>
-
-    </form>
+    <form>
+        <div class="Contact__Card">
+          <div class="Input__Container">
+            <label for="first-name" class="Label">Nombre</label>
+            <input name="first-name" class="Input" type="text" required/>
+          </div>
+          <div class="Input__Container">
+            <label for="last-name" class="Label">Apellido</label>
+            <input name="last-name" class="Input" type="text" required/>
+          </div>
+          <div class="Input__Container">
+            <label for="email" class="Label">Email</label>
+            <input
+              name="email" class="Input" type="email" required/>
+          </div>
+          <div class="Input__Container">
+            <label for="phone" class="Label">Teléfono</label>
+            <input name="phone" class="Input" type="tel"/>
+          </div>
+          <div class="Text__Container">
+            <label for="message" class="Label">Mensaje</label>
+            <textarea class="Input Message" rows="5" name="message" required>
+                
+            </textarea>
+          </div>
+          <div class="Button__Container">
+            <button type="submit" class="Button">Enviar</button>
+          </div>
+        </div>
+      </form>
 
 </body>
 
 <footer>
 
-    <img class="footer-img" src="../assets/logoFacebook.png" alt="Facebook">
-    <img class="footer-img" src="../assets/logoInstagram.png" alt="Instagram">
-    <img class="footer-img" src="../assets/logoTiktok.png" alt="Tiktok">
-    <img class="footer-img" src="../assets/logoTwitter.png" alt="Twitter">
-    <img class="footer-img" src="../assets/logoYoutube.png" alt="Youtube">
+    <div id="pedau">
+        <img class="footer-img" src="../assets/logoFacebook.png" alt="Facebook">
+        <img class="footer-img" src="../assets/logoInstagram.png" alt="Instagram">
+        <img class="footer-img" src="../assets/logoTiktok.png" alt="Tiktok">
+        <img class="footer-img" src="../assets/logoTwitter.png" alt="Twitter">
+        <img class="footer-img" src="../assets/logoYoutube.png" alt="Youtube">
+    </div>
+
+    <a id="aaa" href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank">Vea las políticas y los terminos de privacidad</a>
 
 </footer>
 

@@ -97,8 +97,115 @@ footer{
 }
 
 .horseLuis img{
-    margin-left: 33%;
     margin-bottom: 5rem;
-    width: 37rem;
-    height: 30rem;
+    width: 27rem;
+    height: 22rem;
+}
+
+.horseLuis{
+    display: flex;
+    justify-content: space-around;
+}
+
+.Contact__Card {
+    width: 600px;
+    height: 500px;
+    margin-left: 30%;
+    padding: 2rem;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    grid-template-rows: 1fr 1fr 150px 1fr;
+}
+
+.Input__Container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.Text__Container {
+    grid-column: span 2;
+}
+
+.Button__Container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.Input {
+    font-family: inherit;
+    font-size: 100%;
+    line-height: 1.15;
+    margin: 0;
+    overflow: visible;
+    padding-bottom: 0.5rem;
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+    padding-top: 0.5rem;
+    border: 2px solid lightblue;
+    border-radius: 0.5rem;
+    width: 100%;
+}
+
+.Input:focus {
+    outline: none;
+    box-shadow: 0 0 0 0.2rem rgb(173, 216, 230, 0.5);
+}
+
+.Message {
+    resize: none;
+}
+
+.Label {
+    padding-bottom: 0.25rem;
+    font-weight: 600;
+}
+
+.Button {
+    background-color: darkblue;
+    border-color: #dbdbdb;
+    border-width: 1px;
+    color: white;
+    font-weight: 600;
+    border-radius: 0.5rem;
+    padding: 1rem 1.5rem;
+}
+
+.Button:hover {
+    border-color: #b5b5b5;
+}
+
+.Button:focus {
+    outline: none;
+    border-color: #485fc7;
+    color: #363636;
+    box-shadow: 0 0 0 0.125em rgba(72, 95, 199, 0.25);
+}
+
+.lorem{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.lorem h1{
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.lorem p{
+    margin-left: 15rem;
+    margin-right: 15rem;
+}
+
+.lorem img{
+    margin-top: 2rem;
+}
+
+.escandalo{
+    width: 50rem;
+    height: 40rem;
 }
