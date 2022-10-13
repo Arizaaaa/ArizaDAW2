@@ -1,11 +1,11 @@
 <?php
 
 session_start();
-$id = $_GET['id'];
-$nombre = $_GET['nombre'];
-$descripcion = $_GET['descripcion'];
-$cantidad = $_GET['cantidad'];
-$precio = $_GET['precio'];
+$id = $_POST['id'];
+$nombre = $_POST['nombre'];
+$descripcion = $_POST['descripcion'];
+$cantidad = $_POST['cantidad'];
+$precio = $_POST['precio'];
 
 $servidor="localhost";
 $usuario="root";
@@ -14,9 +14,10 @@ $bd="prod";
 
 $con=mysqli_connect($servidor,$usuario,$password,$bd);
 
-if (isset($_POST['actualizar'])){ actualizar(); }
+if (isset($_POST['actualizar'])) { actualizar(); }
 elseif (isset($_POST['borrar'])) { borrar(); }
 elseif (isset($_POST['buscar'])) { buscar(); }
+elseif (isset($_POST['insertar'])) { insertar(); }
 
 function actualizar() {
 
@@ -29,7 +30,7 @@ function actualizar() {
     
     }
 
-    ver();
+    ver(false);
 
 }
 
@@ -43,7 +44,7 @@ function borrar() {
         $consulta=mysqli_query($con,$sql);
     }
 
-    ver();
+    ver(false);
 
 }
 
@@ -58,6 +59,20 @@ function buscar() {
     }
 
     ver(true);
+
+}
+
+function insertar() {
+
+  if($con){
+    mysqli_set_charset($con,"utf8");
+
+    $sql="INSERT '$id', '$nombre',  '$descripcion', '$cantidad', '$precio' INTO `prod`";
+    
+    $consulta=mysqli_query($con,$sql);
+  }
+
+  ver(false);
 
 }
 
@@ -111,7 +126,7 @@ function ver($_buscar) {
     <div>
       <table class="table table-dark table-borderless">
             <?php
-                if ($_buscar == true) {
+                if ($_buscar == true) {  var_dump("adahi gay");
                     echo "<td>NOMBRE</td>";
                     echo "<td>DESCRIPCIÓN</td>";
                     echo "<td>CANTIDAD</td>";
@@ -126,7 +141,7 @@ function ver($_buscar) {
                     echo "<td>".$fila["precio"]."</td>";
                     echo "</tr>";
                     }
-                } else {
+                } elseif ($_buscar == false) {  var_dump("adahi muy gay");
                     echo "<td>ID</td>";
                     echo "<td>NOMBRE</td>";
                     echo "<td>DESCRIPCIÓN</td>";
