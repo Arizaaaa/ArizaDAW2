@@ -2,10 +2,16 @@
 
 session_start();
 $id = $_POST['id'];
-$nombre = $_POST['nombre'];
 $descripcion = $_POST['descripcion'];
 $cantidad = $_POST['cantidad'];
 $precio = $_POST['precio'];
+
+$nombre = $_POST['nombre'];
+
+$apellidos = $_POST['apellidos'];
+$correo = $_POST['correo'];
+$contraseña = $_POST['contraseña'];
+$cContraseña = $_POST['cContraseña'];
 
 $servidor="localhost";
 $usuario="root";
@@ -14,27 +20,27 @@ $bd="prod";
 
 $con=mysqli_connect($servidor,$usuario,$password,$bd);
 
-if (isset($_POST['actualizar'])) { actualizar(); }
-elseif (isset($_POST['borrar'])) { borrar(); }
-elseif (isset($_POST['buscar'])) { buscar(); }
-elseif (isset($_POST['insertar'])) { insertar(); }
+if (isset($_POST['actualizar'])) { actualizar($con, $id, $nombre, $descripcion, $cantidad, $precio); }
+elseif (isset($_POST['borrar'])) { borrar($con, $id); }
+elseif (isset($_POST['buscar'])) { buscar($con, $id); }
+elseif (isset($_POST['insertar'])) { insertar($con, $nombre, $descripcion, $cantidad, $precio); }
+elseif (isset($_POST['registrar'])) { registrar($con, $nombre, $apellidos, $correo, $contraseña); }
 
-function actualizar() {
+function actualizar($con, $id, $nombre, $descripcion, $cantidad, $precio) {
 
     if($con){
         mysqli_set_charset($con,"utf8");
     
         $sql="UPDATE `prod` SET `nombre`='$nombre',`descripcion`='$descripcion',`cantidad`='$cantidad',`precio`='$precio' WHERE `id` = '$id'";
-        
         $consulta=mysqli_query($con,$sql);
     
     }
 
-    ver(false);
+    ver(false, $con, $id);
 
 }
 
-function borrar() {
+function borrar($con, $id) {
 
     if($con){
         mysqli_set_charset($con,"utf8");
@@ -44,11 +50,11 @@ function borrar() {
         $consulta=mysqli_query($con,$sql);
     }
 
-    ver(false);
+    ver(false, $con, $id);
 
 }
 
-function buscar() {
+function buscar($con, $id) {
 
     if($con){
         mysqli_set_charset($con,"utf8");
@@ -58,112 +64,181 @@ function buscar() {
         $consulta=mysqli_query($con,$sql);
     }
 
-    ver(true);
+    ver(true, $con, $id);
 
 }
 
-function insertar() {
+function insertar($con, $nombre, $descripcion, $cantidad, $precio) {
 
   if($con){
     mysqli_set_charset($con,"utf8");
 
-    $sql="INSERT '$id', '$nombre',  '$descripcion', '$cantidad', '$precio' INTO `prod`";
+    $sql="INSERT INTO `prod`(`id`, `nombre`, `descripcion`, `cantidad`, `precio`) VALUES (NULL,'$nombre','$descripcion','$cantidad','$precio')";
+
+    $consulta=mysqli_query($con,$sql);
+  }
+
+  ver(false, $con, $id);
+
+}
+
+function registrar($con, $nombre, $apellidos, $correo, $contraseña) {
+
+  if($con){
+    mysqli_set_charset($con,"utf8");
+
+    $sql="INSERT INTO `user`(`id`, `nombre`, `apellidos`, `correo`, `contraseña`, `admin`) VALUES (NULL,'$nombre','$apellidos','$correo','$contraseña', 0)";
     
     $consulta=mysqli_query($con,$sql);
   }
 
-  ver(false);
+  hola();
 
 }
 
-function ver($_buscar) {
+function ver($_buscar, $con, $id) {
 
-?>
+  ?>
 
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
-    <title>Vista de productos</title>
-</head>
-<body>
+    <!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="style.css">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+        <title>Vista de productos</title>
+    </head>
+    <body>
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="#">Mercadowna</a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="InsertarProductos.html">Introducir</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="ActualizarProductos.html">Actualizar</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="BuscarProductos.html">Buscar</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="BorrarProductos.html">Borrar</a>
-              </li>
-            </ul>
-            <form class="d-flex">
-              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-              <button class="btn btn-outline-success" type="submit">Buscar</button>
-            </form>
-          </div>
-        </div>
-      </nav>
-    <div>
-      <table class="table table-dark table-borderless">
-            <?php
-                if ($_buscar == true) {  var_dump("adahi gay");
-                    echo "<td>NOMBRE</td>";
-                    echo "<td>DESCRIPCIÓN</td>";
-                    echo "<td>CANTIDAD</td>";
-                    echo "<td>PRECIO</td>";
-                    $sql2="SELECT `nombre`, `descripcion`, `cantidad`, `precio` FROM `prod` WHERE `id` = '$id'";
-                    $consulta=mysqli_query($con,$sql2);
-                    while($fila=$consulta->fetch_assoc()){
-                    echo "<tr>";
-                    echo "<td>".$fila["nombre"]."</td>";
-                    echo "<td>".$fila["descripcion"]."</td>";
-                    echo "<td>".$fila["cantidad"]."</td>";
-                    echo "<td>".$fila["precio"]."</td>";
-                    echo "</tr>";
-                    }
-                } elseif ($_buscar == false) {  var_dump("adahi muy gay");
-                    echo "<td>ID</td>";
-                    echo "<td>NOMBRE</td>";
-                    echo "<td>DESCRIPCIÓN</td>";
-                    echo "<td>CANTIDAD</td>";
-                    echo "<td>PRECIO</td>";
-                    $sql2="SELECT * FROM `prod`";
-                    $consulta=mysqli_query($con,$sql2);
-                    while($fila=$consulta->fetch_assoc()){
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+              <a class="navbar-brand" href="#">Mercadowna</a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="InsertarProductos.html">Introducir</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="ActualizarProductos.html">Actualizar</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="BuscarProductos.html">Buscar</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="BorrarProductos.html">Borrar</a>
+                  </li>
+                </ul>
+                <form class="d-flex">
+                  <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                  <button class="btn btn-outline-success" type="submit">Buscar</button>
+                </form>
+              </div>
+            </div>
+          </nav>
+        <div>
+          <table class="table table-dark table-borderless">
+                <?php
+                    if ($_buscar == true) {
+                        echo "<td>NOMBRE</td>";
+                        echo "<td>DESCRIPCIÓN</td>";
+                        echo "<td>CANTIDAD</td>";
+                        echo "<td>PRECIO</td>";
+                        $sql2="SELECT `nombre`, `descripcion`, `cantidad`, `precio` FROM `prod` WHERE `id` = '$id'";
+                        $consulta2=mysqli_query($con,$sql2);
+                        while($fila=$consulta2->fetch_assoc()){
                         echo "<tr>";
-                        echo "<td>".$fila["id"]."</td>";
                         echo "<td>".$fila["nombre"]."</td>";
                         echo "<td>".$fila["descripcion"]."</td>";
                         echo "<td>".$fila["cantidad"]."</td>";
                         echo "<td>".$fila["precio"]."</td>";
                         echo "</tr>";
+                        }
+                    } elseif ($_buscar == false) {
+                        echo "<td>ID</td>";
+                        echo "<td>NOMBRE</td>";
+                        echo "<td>DESCRIPCIÓN</td>";
+                        echo "<td>CANTIDAD</td>";
+                        echo "<td>PRECIO</td>";
+                        $sql3="SELECT * FROM `prod`";
+                        $consulta3=mysqli_query($con,$sql3);
+                        while($fila=$consulta3->fetch_assoc()){
+                            echo "<tr>";
+                            echo "<td>".$fila["id"]."</td>";
+                            echo "<td>".$fila["nombre"]."</td>";
+                            echo "<td>".$fila["descripcion"]."</td>";
+                            echo "<td>".$fila["cantidad"]."</td>";
+                            echo "<td>".$fila["precio"]."</td>";
+                            echo "</tr>";
+                        }
                     }
-                }
-            ?>
-        </table>
-    </div>
-</body>
-</html>
-<?php
+                ?>
+            </table>
+        </div>
+    </body>
+    </html>
+
+  <?php
+
 }
-?>
+
+function hola() {
+
+  ?>
+  
+    <!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="style.css">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+        <title>Vista de productos</title>
+    </head>
+
+    <body>
+    
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+              <a class="navbar-brand" href="#">Mercadowna</a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="InsertarProductos.html">Introducir</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="ActualizarProductos.html">Actualizar</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="BuscarProductos.html">Buscar</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="BorrarProductos.html">Borrar</a>
+                  </li>
+                </ul>
+                <form class="d-flex">
+                  <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                  <button class="btn btn-outline-success" type="submit">Buscar</button>
+                </form>
+              </div>
+            </div>
+          </nav>
+      </body>
+    </html>
+  <?php
+  }
+  ?>

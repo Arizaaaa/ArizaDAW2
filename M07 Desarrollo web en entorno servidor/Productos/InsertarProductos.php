@@ -22,46 +22,49 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="InsertarProductos.html">Introducir</a>
+            <a class="nav-link active" aria-current="page" href="InsertarProductos.php">Introducir</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="ActualizarProductos.html">Actualizar</a>
+            <a class="nav-link active" aria-current="page" href="ActualizarProductos.php">Actualizar</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="BuscarProductos.html">Buscar</a>
+            <a class="nav-link active" aria-current="page" href="BuscarProductos.php">Buscar</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="BorrarProductos.html">Borrar</a>
+            <a class="nav-link active" aria-current="page" href="BorrarProductos.php">Borrar</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="Registro.php">Registrar</a>
           </li>
         </ul>
         <form class="d-flex">
           <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success" type="submit">Iniciar Sesión</button>
+          <button class="btn btn-outline-success" type="submit">Buscar</button>
         </form>
       </div>
     </div>
   </nav>
     
   <div class="login-box">
-    <h2>Iniciar Sesión</h2>
-    <form action="/datosInsertar.php" method="get">
-      <div class="user-box">
-        <input type="text" name="nomUsuario" required="">
-        <label>Nombre de usuario</label>
-      </div>
-      <div class="user-box">
-        <input type="text" name="pass" required="">
-        <label>Contraseña</label>
-      </div>
+    <h2>Insertar</h2>
+    <form action="/main.php" method="post">
       <div class="user-box">
         <input type="text" name="nombre" required="">
         <label>Nombre</label>
       </div>
       <div class="user-box">
-        <input type="text" name="apellidos" required="">
-        <label>Apellidos</label>
+        <input type="text" name="descripcion" required="">
+        <label>Descripción</label>
       </div>
-      <button type="submit" class="btn btn-outline-primary">INSERTAR</button>
+      <div class="user-box">
+        <input type="number" name="cantidad" required="">
+        <label>Cantidad</label>
+      </div>
+      <div class="user-box">
+        <input type="number" name="precio" required="">
+        <label>Precio</label>
+      </div>
+      <button type="submit" class="btn btn-outline-primary" name="insertar">INSERTAR</button>
     </form>
 </div>
 

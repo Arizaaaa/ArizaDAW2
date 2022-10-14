@@ -22,16 +22,19 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="InsertarProductos.html">Introducir</a>
+            <a class="nav-link active" aria-current="page" href="InsertarProductos.php">Introducir</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="ActualizarProductos.html">Actualizar</a>
+            <a class="nav-link active" aria-current="page" href="ActualizarProductos.php">Actualizar</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="BuscarProductos.html">Buscar</a>
+            <a class="nav-link active" aria-current="page" href="BuscarProductos.php">Buscar</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="BorrarProductos.html">Borrar</a>
+            <a class="nav-link active" aria-current="page" href="BorrarProductos.php">Borrar</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="Registro.php">Registrar</a>
           </li>
         </ul>
         <form class="d-flex">
@@ -44,41 +47,30 @@
     
   <div class="login-box">
     <h2>Registro</h2>
-    <form action="/datosRegistro.php" method="get">
+    <form action="/main.php" method="post">
         <div class="user-box">
             <input type="text" name="nombre" required="">
             <label>Nombre</label>
         </div>
         <div class="user-box">
-            <input type="text" name="apellidos" required="">
+            <input type="text" name="apellidos">
             <label>Apellidos</label>
         </div>
         <div class="user-box">
-            <input type="text" name="nomUsuario" required="">
-            <label>Nombre de usuario</label>
+          <input type="email" name="correo" required="">
+          <label>Correo electrónico</label>
         </div>
         <div class="user-box">
-            <input type="password" name="pass" required="">
+            <input type="password" name="contraseña" required="">
             <label>Contraseña</label>
         </div>
         <div class="user-box">
-            <input type="password" name="cPass" required="">
+            <input type="password" name="cContraseña" required="">
             <label>Confirmar contraseña</label>
         </div>
-        <div class="user-box">
-            <input type="email" name="email" required="">
-            <label>Correo electrónico</label>
-        </div>
-        <button type="submit" class="btn btn-outline-primary" name="registro">REGISTRAR</button>
-        <a href="#" name="adajiooo">
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            Submit
-          </a>
+        <button type="submit" class="btn btn-outline-primary" name="registrar">REGISTRAR</button>
     </form>
-</div>
+  </div>
 
 </body>
 </html>

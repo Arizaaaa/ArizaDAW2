@@ -1,28 +1,3 @@
-<?php
-
-$nomUsuario = $_GET['nomUsuario'];
-$pass = $_GET['pass'];
-$nombre = $_GET['nombre'];
-$apellidos = $_GET['apellidos'];
-$email = $_GET['email'];
-
-$servidor="localhost";
-$usuario="root";
-$password="usbw";
-$bd="prod";
-
-$con=mysqli_connect($servidor,$usuario,$password,$bd);
-
-if($con){
-    mysqli_set_charset($con,"utf8");
-
-    $sql="INSERT INTO `user`(`id`, `nomUsuario`, `pass`, `admin`, `nombre`, `apellidos`, `email`) 
-    VALUES (NULL,'$nomUsuario','$pass', 0, '$nombre', '$apellidos', '$email')";
-    
-    $consulta=mysqli_query($con,$sql);
-
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -34,7 +9,7 @@ if($con){
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
-    <title>Vista de productos</title>
+    <title>Borrar productos</title>
 </head>
 <body>
 
@@ -47,16 +22,19 @@ if($con){
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="InsertarProductos.html">Introducir</a>
+                <a class="nav-link active" aria-current="page" href="InsertarProductos.php">Introducir</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="ActualizarProductos.html">Actualizar</a>
+                <a class="nav-link active" aria-current="page" href="ActualizarProductos.php">Actualizar</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="BuscarProductos.html">Buscar</a>
+                <a class="nav-link active" aria-current="page" href="BuscarProductos.php">Buscar</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="BorrarProductos.html">Borrar</a>
+                <a class="nav-link active" aria-current="page" href="BorrarProductos.php">Borrar</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="Registro.php">Registrar</a>
               </li>
             </ul>
             <form class="d-flex">
@@ -66,27 +44,16 @@ if($con){
           </div>
         </div>
       </nav>
-    <div>
-      <table class="table table-dark table-borderless">
-    <?php
-        echo "<td>NOMBRE</td>";
-        echo "<td>DESCRIPCIÓN</td>";
-        echo "<td>CANTIDAD</td>";
-        echo "<td>PRECIO</td>";
-        echo "<tr>";
-        echo "<td>".$nombre."</td>";
-        echo "<td>".$descripcion."</td>";
-        echo "<td>".$cantidad."</td>";
-        echo "<td>".$precio."</td>";
-        echo "</tr>";
-    ?>
-    </table>
-    <button class="btn btn-outline-primary"><a href="InsertarProductos.html">ATRÁS</a></button>
+    
+    <div class="login-box">
+        <h2>Borrar</h2>
+        <form action="/main.php" method="post">
+          <div class="user-box">
+            <input type="text" name="id" required="">
+            <label>ID</label>
+          </div>
+          <button type="submit" class="btn btn-outline-primary" name="borrar">BORRAR</button>
+        </form>
     </div>
 </body>
 </html>
-
-
-<?php
-}
-?>
