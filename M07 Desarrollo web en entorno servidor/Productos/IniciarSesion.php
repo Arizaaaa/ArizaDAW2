@@ -50,19 +50,11 @@
     <form action="/datosInsertar.php" method="get">
       <div class="user-box">
         <input type="text" name="nomUsuario" required="">
-        <label>Nombre de usuario</label>
+        <label>Correo</label>
       </div>
       <div class="user-box">
         <input type="text" name="pass" required="">
         <label>Contraseña</label>
-      </div>
-      <div class="user-box">
-        <input type="text" name="nombre" required="">
-        <label>Nombre</label>
-      </div>
-      <div class="user-box">
-        <input type="text" name="apellidos" required="">
-        <label>Apellidos</label>
       </div>
       <button type="submit" class="btn btn-outline-primary">INSERTAR</button>
     </form>

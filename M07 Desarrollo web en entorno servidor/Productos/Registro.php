@@ -53,7 +53,7 @@
             <label>Nombre</label>
         </div>
         <div class="user-box">
-            <input type="text" name="apellidos">
+            <input type="text" name="apellidos" required="">
             <label>Apellidos</label>
         </div>
         <div class="user-box">

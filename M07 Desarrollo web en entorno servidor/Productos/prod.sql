@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 30-09-2022 a las 18:11:37
+-- Tiempo de generación: 17-10-2022 a las 15:47:41
 -- Versión del servidor: 5.7.36
 -- Versión de PHP: 8.1.3
 
@@ -20,6 +20,17 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `prod`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `carrito`
+--
+
+CREATE TABLE `carrito` (
+  `id` int(11) NOT NULL,
+  `idUser` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
 
 -- --------------------------------------------------------
 
@@ -73,6 +84,12 @@ INSERT INTO `user` (`id`, `nomUsuario`, `pass`, `admin`, `nombre`, `apellidos`, 
 --
 -- Índices para tablas volcadas
 --
+
+--
+-- Indices de la tabla `carrito`
+--
+ALTER TABLE `carrito`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indices de la tabla `prod`

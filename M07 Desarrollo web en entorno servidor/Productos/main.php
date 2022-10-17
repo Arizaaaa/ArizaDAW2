@@ -92,7 +92,7 @@ function registrar($con, $nombre, $apellidos, $correo, $contraseña) {
     $consulta=mysqli_query($con,$sql);
   }
 
-  hola();
+  hola($con);
 
 }
 
@@ -189,7 +189,7 @@ function ver($_buscar, $con, $id) {
 
 }
 
-function hola() {
+function hola($con) {
 
   ?>
   
@@ -237,6 +237,30 @@ function hola() {
               </div>
             </div>
           </nav>
+        <div>
+          <table class="table table-dark table-borderless">
+              <?php
+              echo "<td>ID</td>";
+              echo "<td>NOMBRE</td>";
+              echo "<td>APELLIDOS</td>";
+              echo "<td>CORREO</td>";
+              echo "<td>CONTRASEÑA</td>";
+              echo "<td>ADMIN</td>";
+              $sql3="SELECT * FROM `user`";
+              $consulta3=mysqli_query($con,$sql3);
+              while($fila=$consulta3->fetch_assoc()){
+                  echo "<tr>";
+                  echo "<td>".$fila["id"]."</td>";
+                  echo "<td>".$fila["nombre"]."</td>";
+                  echo "<td>".$fila["apellidos"]."</td>";
+                  echo "<td>".$fila["correo"]."</td>";
+                  echo "<td>".$fila["contraseña"]."</td>";
+                  echo "<td>".$fila["admin"]."</td>";
+                  echo "</tr>";
+              }
+              ?>
+            </table>
+          </div>
       </body>
     </html>
   <?php
