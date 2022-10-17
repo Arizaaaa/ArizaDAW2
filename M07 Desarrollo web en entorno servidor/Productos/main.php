@@ -1,6 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <title>Mi titulo de Proyecto</title>
+      <link rel="stylesheet" href="css/estilos.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.9/sweetalert2.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+  </head>
+  <body>
+
+  <!-- <script type='text/javascript'> 
+            
+    function login () {
+
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...!',
+        text: 'Correo o contraseña errónea.',  
+      }).then(function() { window.location = "IniciarSesion.php"; });
+
+    }
+
+  </script> -->
+
+  </body>
+</html>
+
 <?php
 
+error_reporting(0);
+
 session_start();
+
 $id = $_POST['id'];
 $descripcion = $_POST['descripcion'];
 $cantidad = $_POST['cantidad'];
@@ -16,15 +48,16 @@ $cContraseña = $_POST['cContraseña'];
 $servidor="localhost";
 $usuario="root";
 $password="usbw";
-$bd="prod";
+$bd="test";
 
 $con=mysqli_connect($servidor,$usuario,$password,$bd);
 
 if (isset($_POST['actualizar'])) { actualizar($con, $id, $nombre, $descripcion, $cantidad, $precio); }
 elseif (isset($_POST['borrar'])) { borrar($con, $id); }
 elseif (isset($_POST['buscar'])) { buscar($con, $id); }
-elseif (isset($_POST['insertar'])) { insertar($con, $nombre, $descripcion, $cantidad, $precio); }
+elseif (isset($_POST['insertar'])) { insertar($con, $nombre, $descripcion, $cantidad, $precio, $id); }
 elseif (isset($_POST['registrar'])) { registrar($con, $nombre, $apellidos, $correo, $contraseña); }
+elseif (isset($_POST['login'])) { login($con, $correo, $contraseña); }
 
 function actualizar($con, $id, $nombre, $descripcion, $cantidad, $precio) {
 
@@ -68,7 +101,7 @@ function buscar($con, $id) {
 
 }
 
-function insertar($con, $nombre, $descripcion, $cantidad, $precio) {
+function insertar($con, $nombre, $descripcion, $cantidad, $precio, $id) {
 
   if($con){
     mysqli_set_charset($con,"utf8");
@@ -87,7 +120,7 @@ function registrar($con, $nombre, $apellidos, $correo, $contraseña) {
   if($con){
     mysqli_set_charset($con,"utf8");
 
-    $sql="INSERT INTO `user`(`id`, `nombre`, `apellidos`, `correo`, `contraseña`, `admin`) VALUES (NULL,'$nombre','$apellidos','$correo','$contraseña', 0)";
+    $sql="INSERT INTO `user`(`id`, `nombre`, `apellidos`, `correo`, `contraseña`, `admin`) VALUES (NULL,'$nombre','$apellidos','$correo','".md5($contraseña)."', 0)";
     
     $consulta=mysqli_query($con,$sql);
   }
@@ -95,6 +128,16 @@ function registrar($con, $nombre, $apellidos, $correo, $contraseña) {
   hola($con);
 
 }
+
+function login($con, $correo, $contraseña) {
+
+  if($con){
+    
+  }
+
+}
+
+
 
 function ver($_buscar, $con, $id) {
 

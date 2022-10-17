@@ -36,6 +36,9 @@
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="Registro.php">Registrar</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="IniciarSesion.php">Iniciar Sesión</a>
+          </li>
         </ul>
         <form class="d-flex">
           <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
@@ -47,16 +50,16 @@
     
   <div class="login-box">
     <h2>Iniciar Sesión</h2>
-    <form action="/datosInsertar.php" method="get">
+    <form action="/main.php" method="post">
       <div class="user-box">
-        <input type="text" name="nomUsuario" required="">
+        <input type="text" name="correo" required="">
         <label>Correo</label>
       </div>
       <div class="user-box">
-        <input type="text" name="pass" required="">
+        <input type="password" name="contraseña" required="">
         <label>Contraseña</label>
       </div>
-      <button type="submit" class="btn btn-outline-primary">INSERTAR</button>
+      <button type="submit" class="btn btn-outline-primary" name="login">INICIAR</button>
     </form>
 </div>
 
