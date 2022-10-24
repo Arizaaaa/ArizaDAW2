@@ -1,37 +1,13 @@
-<!DOCTYPE html>
-<html>
-  <head>
-      <meta charset="utf-8">
-      <meta http-equiv="X-UA-Compatible" content="IE=edge">
-      <title>Mi titulo de Proyecto</title>
-      <link rel="stylesheet" href="css/estilos.css">
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.9/sweetalert2.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-  </head>
-  <body>
-
-  <!-- <script type='text/javascript'> 
-            
-    function login () {
-
-      Swal.fire({
-        icon: 'error',
-        title: 'Oops...!',
-        text: 'Correo o contraseña errónea.',  
-      }).then(function() { window.location = "IniciarSesion.php"; });
-
-    }
-
-  </script> -->
-
-  </body>
-</html>
-
 <?php
+
+/**
+ * Class description
+ * 
+ * @author Marc Ariza Gómez-Coronado
+ */
 
 error_reporting(0);
 
-session_start();
 
 $id = $_POST['id'];
 $descripcion = $_POST['descripcion'];
