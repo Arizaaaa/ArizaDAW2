@@ -42,7 +42,7 @@ $nombre = $_POST['nombre'];
 
 $apellidos = $_POST['apellidos'];
 $correo = $_POST['correo'];
-$contraseña = $_POST['contraseña'];
+$contraseña = md5($_POST['contraseña']);
 $cContraseña = $_POST['cContraseña'];
 
 $servidor="localhost";
@@ -132,12 +132,18 @@ function registrar($con, $nombre, $apellidos, $correo, $contraseña) {
 function login($con, $correo, $contraseña) {
 
   if($con){
+
+    $sql = "SELECT * FROM `user` WHERE `correo` = '$correo'";
+    $consulta=mysqli_query($con,$sql);
+    $fila=$consulta->fetch_assoc();
+
+      var_dump($fila['contraseña']);
+      var_dump($fila['correo']);
+      var_dump($contraseña);
+
+    }  
     
-  }
-
 }
-
-
 
 function ver($_buscar, $con, $id) {
 
@@ -158,34 +164,44 @@ function ver($_buscar, $con, $id) {
     </head>
     <body>
 
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <div class="container-fluid">
-              <a class="navbar-brand" href="#">Mercadowna</a>
-              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-              </button>
-              <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                  <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="InsertarProductos.html">Introducir</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="ActualizarProductos.html">Actualizar</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="BuscarProductos.html">Buscar</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="BorrarProductos.html">Borrar</a>
-                  </li>
-                </ul>
-                <form class="d-flex">
-                  <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                  <button class="btn btn-outline-success" type="submit">Buscar</button>
-                </form>
-              </div>
-            </div>
-          </nav>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Mercadowna</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="InsertarProductos.php">Introducir</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="ActualizarProductos.php">Actualizar</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="BuscarProductos.php">Buscar</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="BorrarProductos.php">Borrar</a>
+          </li>
+        </ul>
+        <form class="d-flex">
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li>
+              <a class="nav-link active" aria-current="page" href="Carrito.php"></a>
+            </li>
+            <li>
+              <a class="nav-link active" aria-current="page" href="Registro.php">Registrar</a>
+            </li>
+            <li>
+              <a class="nav-link active" aria-current="page" href="IniciarSesion.php">Iniciar Sesión</a>
+            </li>
+          </ul>
+        </form>
+      </div>
+    </div>
+  </nav>
         <div>
           <table class="table table-dark table-borderless">
                 <?php
@@ -252,34 +268,44 @@ function hola($con) {
 
     <body>
     
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <div class="container-fluid">
-              <a class="navbar-brand" href="#">Mercadowna</a>
-              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-              </button>
-              <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                  <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="InsertarProductos.html">Introducir</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="ActualizarProductos.html">Actualizar</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="BuscarProductos.html">Buscar</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="BorrarProductos.html">Borrar</a>
-                  </li>
-                </ul>
-                <form class="d-flex">
-                  <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                  <button class="btn btn-outline-success" type="submit">Buscar</button>
-                </form>
-              </div>
-            </div>
-          </nav>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Mercadowna</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="InsertarProductos.php">Introducir</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="ActualizarProductos.php">Actualizar</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="BuscarProductos.php">Buscar</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="BorrarProductos.php">Borrar</a>
+          </li>
+        </ul>
+        <form class="d-flex">
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li>
+              <a class="nav-link active" aria-current="page" href="Carrito.php"></a>
+            </li>
+            <li>
+              <a class="nav-link active" aria-current="page" href="Registro.php">Registrar</a>
+            </li>
+            <li>
+              <a class="nav-link active" aria-current="page" href="IniciarSesion.php">Iniciar Sesión</a>
+            </li>
+          </ul>
+        </form>
+      </div>
+    </div>
+  </nav>
         <div>
           <table class="table table-dark table-borderless">
               <?php
