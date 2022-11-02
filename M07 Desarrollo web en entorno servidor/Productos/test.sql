@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 17-10-2022 a las 21:01:39
+-- Tiempo de generación: 20-10-2022 a las 07:52:00
 -- Versión del servidor: 5.6.13
 -- Versión de PHP: 5.4.17
 
@@ -31,8 +31,16 @@ USE `test`;
 CREATE TABLE IF NOT EXISTS `carrito` (
   `id` int(11) NOT NULL,
   `idUser` int(11) NOT NULL,
+  `cantidad` int(11) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
+
+--
+-- Volcado de datos para la tabla `carrito`
+--
+
+INSERT INTO `carrito` (`id`, `idUser`, `cantidad`) VALUES
+(1, 1, 2);
 
 -- --------------------------------------------------------
 
@@ -69,13 +77,21 @@ INSERT INTO `prod` (`id`, `nombre`, `descripcion`, `cantidad`, `precio`) VALUES
 
 CREATE TABLE IF NOT EXISTS `user` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `nombre` varchar(30) NOT NULL,
-  `apellidos` varchar(50) NOT NULL,
-  `correo` varchar(50) NOT NULL,
-  `contraseña` varchar(100) NOT NULL,
+  `nombre` varchar(30) COLLATE utf8_spanish2_ci NOT NULL,
+  `apellidos` varchar(50) COLLATE utf8_spanish2_ci NOT NULL,
+  `correo` varchar(50) COLLATE utf8_spanish2_ci NOT NULL,
+  `contraseña` varchar(100) COLLATE utf8_spanish2_ci NOT NULL,
   `admin` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `correo` (`correo`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci AUTO_INCREMENT=2 ;
+
+--
+-- Volcado de datos para la tabla `user`
+--
+
+INSERT INTO `user` (`id`, `nombre`, `apellidos`, `correo`, `contraseña`, `admin`) VALUES
+(1, '123', '123', '123@gmail.com', 'd9b1d7db4cd6e70935368a1efb10e377', 0);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

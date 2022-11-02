@@ -8,11 +8,6 @@
     height: 19rem;
 }
 
-#cuerpo{
-    background-color: rgb(50, 50, 50);
-    margin-top: -5px;
-}
-
 body{
     background-color: rgb(100, 100, 100);
 }
@@ -26,26 +21,11 @@ body{
     z-index: 99;
 }
 
-nav ul{
-    text-align: center;
-}
-
-nav ul li{
-    display: inline-block;
-    padding-left: 2rem;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
-nav ul li a{
-    text-decoration: none;
-    color: black;
-    font-size: 1.5rem;
-}
-
 .home{
     display: flex;
     justify-content: space-evenly;
-    padding-top: 5rem;
+    padding-left: -5rem;
+    padding-top: 2.5rem;
 }
 
 .home-img{
