@@ -75,22 +75,4 @@ class UserController extends Controller
             "msg" => "Cierre de Sesión",
         ]);
     }
-
-    public function insert(Request $request) {
-        $request->validate([
-            'nombre' => 'required',
-            'cantidad' => 'required',
-            'precio' => 'required'
-        ]);
-        $producto = new Producto();
-        $producto->nombre = $request->nombre;
-        $producto->cantidad = $request->cantidad;
-        $producto->precio = $request->precio;
-        $producto->save();
-
-        return response()->json([
-            "status" => 1,
-            "msg" => "¡Registro insertado!",
-        ]);
-    }
 }
