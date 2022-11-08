@@ -26,3 +26,38 @@ body{
 .tabla1 tr{
   border-bottom: 1px solid black;
 }
+
+div h1{
+  margin-left: 5rem;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.festivo{
+  display: flex;
+  justify-content: space-around;
+}
+
+.festivo h1{
+  font-size: 25px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.full{
+  display: flex;
+  justify-content: left;
+}
+
+.nacional{
+  color:green;
+ }
+ 
+ .regional{
+   color:blueviolet;
+ }
+ 
+ .centre{
+   color: yellow;
+ }
+ 
+ .local{
+   color: pink;
+ }

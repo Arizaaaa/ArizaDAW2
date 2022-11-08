@@ -1,5 +1,24 @@
-<div class="tabla1">
-    <td *ngFor="let day of septiembre">
-      <tr>{{day}}</tr>
-    </td>
+<div class="festivo">
+  <h1 class="nacional">Festiu Nacional</h1>
+  <h1 class="regional">Festiu Regional</h1>
+  <h1 class="local">Festiu Local</h1>
+  <h1 class="centre">Festiu Centre</h1>
+</div>
+<div class="full">
+  <div>
+    <h1>Septiembre</h1>
+      <div class="tabla1">
+          <td *ngFor="let day of septiembre">
+            <tr>{{day}}</tr>
+          </td>
+      </div><br>
+  </div>
+  <div>
+    <h1>Octubre</h1>
+    <div class="tabla1">
+      <td *ngFor="let day of octubre">
+        <tr>{{day}}</tr>
+      </td>
+    </div>
+  </div>
 </div>
