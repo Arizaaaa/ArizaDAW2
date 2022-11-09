@@ -1,5 +1,58 @@
-<div class="tabla1">
-    <td *ngFor="let day of septiembre">
-      <tr>{{day}}</tr>
-    </td>
+<div class="festivo">
+  <h1 [ngStyle]="{'color':colorNacional}">Festiu Nacional</h1>
+  <h1 [ngStyle]="{'color':colorRegional}">Festiu Regional</h1>
+  <h1 [ngStyle]="{'color':colorLocal}">Festiu Local</h1>
+  <h1 [ngStyle]="{'color':colorCentro}">Festiu Centre</h1>
+</div>
+<div class="full">
+  <div>
+    <h1>Septiembre</h1>
+      <div class="tabla1">
+        <td *ngFor="let semana of septiembre[0].semana; let i = index">
+          <tr>{{semana}}</tr>
+        </td>
+        <td *ngFor="let dias of septiembre[0].dias; let i = index">
+          <div *ngIf="dias != septiembre[0].nacional && dias != septiembre[0].regional && dias != septiembre[0].local && dias != septiembre[0].centro">
+            <tr>{{dias}}</tr>
+          </div>
+          <div *ngIf="dias == septiembre[0].nacional">
+            <tr ngClass="nacional">{{dias}}</tr>
+          </div>
+          <div *ngIf="dias == septiembre[0].regional">
+            <tr ngClass="regional">{{dias}}</tr>
+          </div>
+          <div *ngIf="dias == septiembre[0].local">
+            <tr ngClass="local">{{dias}}</tr>
+          </div>
+          <div *ngIf="dias == septiembre[0].centro">
+            <tr ngClass="centro">{{dias}}</tr>
+          </div>
+        </td>
+      </div><br>
+  </div>
+  <div>
+    <h1>Octubre</h1>
+    <div class="tabla1">
+      <td *ngFor="let semana of octubre[0].semana; let i = index">
+        <tr>{{semana}}</tr>
+      </td>
+      <td *ngFor="let dias of octubre[0].dias; let i = index">
+        <div *ngIf="dias != octubre[0].nacional && dias != octubre[0].regional && dias != octubre[0].local && dias != octubre[0].centro">
+          <tr>{{dias}}</tr>
+        </div>
+        <div *ngIf="dias == octubre[0].nacional">
+          <tr class="nacional">{{dias}}</tr>
+        </div>
+        <div *ngIf="dias == octubre[0].regional">
+          <tr ngClass="regional">{{dias}}</tr>
+        </div>
+        <div *ngIf="dias == octubre[0].local">
+          <tr ngClass="local">{{dias}}</tr>
+        </div>
+        <div *ngIf="dias == octubre[0].centro">
+          <tr ngClass="centro">{{dias}}</tr>
+        </div>
+      </td>
+    </div>
+  </div>
 </div>
