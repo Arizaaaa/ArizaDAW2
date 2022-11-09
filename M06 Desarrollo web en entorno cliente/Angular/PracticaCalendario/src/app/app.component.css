@@ -1,7 +1,7 @@
 body{
   background-color: #fefed9;
   font-family: 'Helvetica';
-  font-size: 16px;
+  font-size: 14px;
 }
 
 .tabla1{
@@ -13,7 +13,7 @@ body{
 
 .tabla1 th, .tabla1 td{
   text-align: center;
-  padding: .2em .5em;
+  padding: .2em .9rem;
 }
 
 .tabla1 caption{
@@ -21,10 +21,6 @@ body{
   font-style: italic;
   font-size: 20px;
   margin-bottom: .5em;
-}
-
-.tabla1 tr{
-  border-bottom: 1px solid black;
 }
 
 div h1{
@@ -47,17 +43,18 @@ div h1{
 }
 
 .nacional{
-  color:green;
- }
- 
- .regional{
-   color:blueviolet;
- }
- 
- .centre{
-   color: yellow;
- }
- 
- .local{
-   color: pink;
- }
+
+	background-color: rgb(0, 212, 28);
+}
+
+.regional{
+	background-color: rgb(179, 127, 228);
+}
+
+.local{
+	background-color: rgb(202, 102, 152);
+}
+
+.centro{
+	background-color: rgb(211, 208, 9);
+}
