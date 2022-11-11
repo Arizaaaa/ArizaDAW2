@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\Api\ProductController;
+use App\Http\Controllers\Api\CategoryController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -23,7 +24,14 @@ Route::group( ['middleware' => ["auth:sanctum"]], function(){
     Route::get('user-profile', [UserController::class, 'userProfile']);
     Route::get('logout', [UserController::class, 'logout']);
     Route::post('insert', [ProductController::class, 'insert']);
-
+    Route::post('delete', [ProductController::class, 'delete']);
+    Route::post('update', [ProductController::class, 'update']);
+    Route::post('read', [ProductController::class, 'read']);
+    Route::post('insertCat', [CategoryController::class, 'insert']);
+    Route::post('deleteCat', [CategoryController::class, 'delete']);
+    Route::post('updateCat', [CategoryController::class, 'update']);
+    Route::post('readCat', [CategoryController::class, 'read']);
+    
 });
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
