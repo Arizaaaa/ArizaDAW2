@@ -1,11 +1,6 @@
-.img{
-    height: 50px;
-    width: 50px;
-    border-radius: 100%;
-}
-
 .users{
     display: flex;
+    justify-content: space-between;
 }
 
 .base{
@@ -15,4 +10,21 @@
 
 .imgg{
     border-radius: 20px;
+}
+
+.img{
+    height: 50px;
+    width: 50px;
+    border-radius: 100%;
+    padding-right: 25px;
+}
+
+.fecha{
+    padding-left: 10px;
+}
+
+.titulo{
+    padding-left: 10px;
+    padding-top: 5px;
+    padding-right: 10px;
 }
