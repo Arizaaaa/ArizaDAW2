@@ -3,8 +3,8 @@
         <div>
             <img class="imgg" *ngIf="tareas.img != null" src="{{tareas.img}}" alt="">
             <p class="titulo">{{tareas.titulo}}</p>
-            <div class="users" >
-                <p class="fecha">{{tareas.fechaFin}}</p>
+            <div class="users" *ngIf="tareas.fechaFin != null">
+                <p class="fecha" [ngClass]="compararFecha(tareas)">{{tareas.fechaFin}}</p>
                 <div *ngFor="let usuario of tareas.usuarios">
                     <img class="img" src="{{usuario.img}}" alt="">
                 </div>

@@ -16,7 +16,7 @@
     height: 50px;
     width: 50px;
     border-radius: 100%;
-    padding-right: 25px;
+    margin-right: 10px;
 }
 
 .fecha{
@@ -27,4 +27,20 @@
     padding-left: 10px;
     padding-top: 5px;
     padding-right: 10px;
+}
+
+.rojo{
+    color: red;
+}
+
+.verde{
+    color: green;
+}
+
+.naranja{
+    color: orange;
+}
+
+.gris{
+    color: gray;
 }
