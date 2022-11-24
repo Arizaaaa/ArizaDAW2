@@ -1,3 +1,4 @@
+import * as moment from 'moment';
 import { Component, Input, OnInit } from '@angular/core';
 import { Tarea } from '../models/tarea-model';
 
@@ -8,34 +9,23 @@ import { Tarea } from '../models/tarea-model';
 })
 export class TareaComponent implements OnInit {
 
-  fecha = new Date("2019/01/16");
+  date = moment().format('YYYY-MM-DD');
 
   @Input() tareas: Tarea;
 
-  constructor() {
-    this.tareas = {};
-  }
-
-  ngOnInit(): void {
-  }
+  constructor() { this.tareas = {}; }
+  ngOnInit(): void {  }
 
   compararFecha(tareas:any){
 
-    let añoFin:number = parseInt(tareas.fechaFin.toString().substring(0, 4));
-    let mesFin:number = parseInt(tareas.fechaFin.toString().substring(5, 7));
-    let diaFin:number = parseInt(tareas.fechaFin.toString().substring(8, 10));
+    let ayer = moment(this.date, 'YYYY-MM-DD').subtract(1, 'days');
+    let fecha = moment(this.date, 'YYYY-MM-DD'); 
 
-    let año:number = parseInt(this.fecha.getFullYear().toString().substring(0, 4));
-    let mes:number = parseInt(this.fecha.getMonth().toString().substring(5, 7));
-    let dia:number = parseInt(this.fecha.getDay().toString().substring(8, 10));
+    let fin = moment(tareas.fechaFin, 'YYYY-MM-DD');
 
-console.log(año, mes, dia);
-
-    if(año < añoFin && tareas.lista != "Finalizadas") {return "rojo"}
-    else if (año < añoFin && tareas.lista == "Finalizadas") {return "verde"}
-    else if ((dia - 1) >= diaFin && dia <= diaFin) {return "naranja"}
-    else {return "gris"}   
-
+    if (fin.isSame(ayer) || fin.isSame(fecha)) { return "naranja" }
+    else if (fin.isBefore(fecha) && tareas.lista == "Finalizadas") { return "verde" }
+    else if (fin.isBefore(fecha) && tareas.lista != "Finalizadas") { return "rojo" }
+    else {return "gris"}
   }
-
 }
