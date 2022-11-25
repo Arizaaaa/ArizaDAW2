@@ -18,7 +18,7 @@ export class TareaComponent implements OnInit {
 
   compararFecha(tareas:any){
 
-    let ayer = moment(this.date, 'YYYY-MM-DD').subtract(1, 'days');
+    let ayer = moment(this.date, 'YYYY-MM-DD').subtract(-1, 'days');
     let fecha = moment(this.date, 'YYYY-MM-DD'); 
 
     let fin = moment(tareas.fechaFin, 'YYYY-MM-DD');
