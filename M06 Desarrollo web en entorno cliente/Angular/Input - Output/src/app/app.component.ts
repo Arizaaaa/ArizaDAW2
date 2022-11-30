@@ -17,14 +17,15 @@ export class AppComponent {
 
   constructor() {
     const tareasJSON: string = `{
-      "tareas": [ { "id": 0, "lista": "${k_FINALIZADAS_LISTA}", "img":
+      "tareas": [
+      { "id": 0, "lista": "${k_FINALIZADAS_LISTA}", "img":
       "https://picsum.photos/300/200", "titulo": "Tarea 1: Diseño UI",
       "usuarios": [{"email": "lponts@ilerna.com", "img":
       "https://picsum.photos/300/300", "nick": "Juan", "alt":
       "Usuario"}], "fechaFin": "2019-01-16" },
-      { "id": 1, "lista": "${k_PROGRESO_LISTA}", "img":
-      "https://picsum.photos/300/200", "titulo": "Tarea 2: Diseño de todo 
-      el Backend", "usuarios": [], "fechaFin": "2022-11-09" },
+      {"id": 1, "lista": "${k_PROGRESO_LISTA}", "img": 
+      "https://picsum.photos/300/200", "titulo":"Tarea 2: Diseño de
+      todo el Backend", "usuarios": null, "fechaFin": "2022-11-09"},
       { "id": 2, "lista": "${k_PENDIENTES_LISTA}", "img": null,
       "titulo": "Tarea 3: Diseño de la base de datos", "usuarios":
       [{"email": "jdominguez@ilerna.com", "img":
