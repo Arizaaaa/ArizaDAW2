@@ -17,8 +17,9 @@ return new class extends Migration
             $table->string('nombre');
             $table->string('apellidos');
             $table->string('dni');
-            $table->string('curso');
+            $table->unsignedBigInteger('curso');
             $table->timestamps();
+            $table->foreign('curso')->references('id')->on('grades')->onDelete('cascade');
         });
     }
 
