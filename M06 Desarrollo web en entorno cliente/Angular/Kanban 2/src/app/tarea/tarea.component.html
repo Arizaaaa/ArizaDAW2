@@ -6,7 +6,7 @@
             <div class="users" *ngIf="tareas.fechaFin != null">
                 <p class="fecha" [ngClass]="compararFecha(tareas)">{{tareas.fechaFin}}</p>
                 <div *ngFor="let usuario of tareas.usuarios">
-                    <img class="img" src="{{usuario.img}}" alt="">
+                    <img class="img" src="{{usuario.img}}" alt=""  matTooltip="{{usuario.nick}}">
                 </div>
             </div>
         </div>
