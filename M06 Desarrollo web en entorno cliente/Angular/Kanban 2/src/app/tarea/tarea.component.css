@@ -7,6 +7,8 @@
     background-color: rgb(199, 168, 127);
     border-radius: 20px;
     box-shadow: 5px 5px 7px rgb(139, 139, 139);
+    cursor: pointer;
+    margin-bottom: 15px;
 }
 
 .imgg{

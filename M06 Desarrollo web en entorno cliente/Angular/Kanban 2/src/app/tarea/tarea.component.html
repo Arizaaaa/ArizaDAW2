@@ -3,7 +3,7 @@
         <div>
             <img class="imgg" *ngIf="tareas.img != null" src="{{tareas.img}}" alt="">
             <p class="titulo">{{tareas.titulo}}</p>
-            <div class="users" *ngIf="tareas.fechaFin != null">
+            <div class="users" *ngIf="tareas.fechaFin != null" (click)="AppComponent.setVisible(true)">
                 <p class="fecha" [ngClass]="compararFecha(tareas)">{{tareas.fechaFin}}</p>
                 <div *ngFor="let usuario of tareas.usuarios">
                     <img class="img" src="{{usuario.img}}" alt=""  matTooltip="{{usuario.nick}}">

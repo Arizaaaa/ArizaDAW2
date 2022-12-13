@@ -10,7 +10,12 @@ const k_FINALIZADAS_LISTA: string = "Finalizadas";
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
+
 export class AppComponent {
+
+  static visible:boolean;
+
+  AppComponent = AppComponent;
 
   leerFormulario(json: string) {
     console.log(JSON.stringify(json));
@@ -18,8 +23,10 @@ export class AppComponent {
 
   listas: string[] = [];
   tareas: Tarea[];
+  
 
   constructor() {
+    AppComponent.visible=false
     const tareasJSON: string = `{
       "tareas": [
         { "id": 0, "lista": "${k_FINALIZADAS_LISTA}", "img":
@@ -52,4 +59,8 @@ export class AppComponent {
     this.listas.push(k_PROGRESO_LISTA);
     this.listas.push(k_FINALIZADAS_LISTA);
   }
+
+  static setVisible (value:boolean) { AppComponent.visible = value; }
+
+
 }

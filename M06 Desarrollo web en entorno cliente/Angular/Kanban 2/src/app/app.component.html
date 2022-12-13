@@ -1,10 +1,15 @@
-<div class="full" *ngFor="let lista of listas">
-    <h3>{{lista}}</h3>
-    <div *ngFor="let tarea of tareas; index as i">
-      <app-tarea *ngIf="tarea.lista == lista" [tareas]="tareas[i]"></app-tarea>
-    </div>
+<div *ngIf="AppComponent.visible == false">
+  <div class="full" *ngFor="let lista of listas">
+      <h3>{{lista}}</h3>
+      <div *ngFor="let tarea of tareas; index as i">
+        <app-tarea *ngIf="tarea.lista == lista" [tareas]="tareas[i]"></app-tarea>
+      </div>
+      <div class="base">
+        <p (click)="AppComponent.setVisible(true)">+ Añadir Nueva Tarea</p>
+      </div>
+  </div>
 </div>
-<app-formulario (guardarForm)="leerFormulario($event)"></app-formulario>
-<button matTooltip="Xarus es moro">
-  Action
-</button>
+
+<div *ngIf="AppComponent.visible == true">
+  <app-formulario (guardarForm)="leerFormulario($event)"></app-formulario>
+</div>

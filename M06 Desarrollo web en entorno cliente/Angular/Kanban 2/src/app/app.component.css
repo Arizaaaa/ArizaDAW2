@@ -11,3 +11,12 @@
 h3{
     text-align: center;
 }
+
+.base{
+    background-color: rgb(199, 168, 127);
+    border-radius: 20px;
+    box-shadow: 5px 5px 7px rgb(139, 139, 139);
+    text-align: center;
+    cursor: pointer;
+    
+}
