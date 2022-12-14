@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Tarea } from './models/tarea-model';
 
 const k_PENDIENTES_LISTA: string = "Pendientes";
@@ -13,20 +13,18 @@ const k_FINALIZADAS_LISTA: string = "Finalizadas";
 
 export class AppComponent {
 
-  static visible:boolean;
+  @Input() visible:boolean;
 
-  AppComponent = AppComponent;
-
-  leerFormulario(json: string) {
+  leerFormulario(json: string) { 
     console.log(JSON.stringify(json));
+    
   }
 
   listas: string[] = [];
   tareas: Tarea[];
   
-
   constructor() {
-    AppComponent.visible=false
+    this.visible = false;
     const tareasJSON: string = `{
       "tareas": [
         { "id": 0, "lista": "${k_FINALIZADAS_LISTA}", "img":
@@ -60,7 +58,5 @@ export class AppComponent {
     this.listas.push(k_FINALIZADAS_LISTA);
   }
 
-  static setVisible (value:boolean) { AppComponent.visible = value; }
-
-
+  setVisible (value:boolean) { this.visible = value; }
 }

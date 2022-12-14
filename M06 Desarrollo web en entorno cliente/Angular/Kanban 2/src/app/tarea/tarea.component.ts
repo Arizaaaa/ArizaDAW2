@@ -1,7 +1,7 @@
 import * as moment from 'moment';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 import { Tarea } from '../models/tarea-model';
-import { HAMMER_LOADER } from '@angular/platform-browser';
+import { AppComponent } from '../app.component';
 
 @Component({
   selector: 'app-tarea',
