@@ -14,9 +14,35 @@ const k_FINALIZADAS_LISTA: string = "Finalizadas";
 export class AppComponent {
 
   @Input() visible:boolean;
+  @Input() info:any;
 
   leerFormulario(json: string) { 
-    console.log(JSON.stringify(json));
+
+    let task = JSON.parse(json);
+
+    let nueva:boolean = true;
+
+    console.log(this.tareas.length);
+
+    for (let i = 0; i < this.tareas.length; i++) {
+
+      if (this.tareas[i]["id"] == task.id){
+
+        this.tareas[i] = task;
+        nueva = false;
+      }
+
+    }
+
+    if (nueva) { 
+      task.id = this.tareas.length; 
+      this.tareas = this.tareas.concat(task); 
+
+    }
+
+    console.log(task);
+
+    console.log(this.tareas);
     
   }
 
@@ -25,6 +51,7 @@ export class AppComponent {
   
   constructor() {
     this.visible = false;
+    
     const tareasJSON: string = `{
       "tareas": [
         { "id": 0, "lista": "${k_FINALIZADAS_LISTA}", "img":
@@ -59,4 +86,6 @@ export class AppComponent {
   }
 
   setVisible (value:boolean) { this.visible = value; }
+
+  volverFormInfo(tarea:Tarea, value:boolean) { this.visible = value; this.info = tarea; }
 }

@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AppComponent } from '../app.component';
-import { Tarea } from '../models/tarea-model';
+import { Usuario } from '../models/usuario-model';
 
 @Component({
   selector: 'app-formulario',
@@ -14,11 +14,34 @@ export class FormularioComponent extends AppComponent{
   @Output() volver: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   taskForm = new FormGroup({
+    id: new FormControl(),
     titulo: new FormControl('', [Validators.required]),
     lista: new FormControl('', [Validators.required]),
-    date: new FormControl(''),
-    url: new FormControl('')
+    fechaFin: new FormControl(),
+    img: new FormControl(),
+    usuario: new FormControl(),
   });
+
+  users:Usuario[] = [];
+
+  ngOnInit(): void {
+
+    if(this.info != undefined){
+
+      console.log(this.info);
+      this.taskForm.setValue({
+
+        id: this.info.id,
+        titulo: this.info.titulo,
+        lista: this.info.lista,
+        fechaFin: this.info.fechaFin,
+        img: this.info.img,
+        usuario: this.users
+
+      });
+
+    }
+  }
 
   getErrorMessageTitulo() {
     if (this.taskForm.controls.titulo.hasError('required')) {
@@ -43,6 +66,8 @@ export class FormularioComponent extends AppComponent{
 
   }
 
-  volverForm() { this.volver.emit(false); }
+  volverForm() { 
+    this.volver.emit(false); 
+  }
 
 }
