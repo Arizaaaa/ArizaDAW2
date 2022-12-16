@@ -2,10 +2,10 @@
   <div class="full" *ngFor="let lista of listas">
       <h3>{{lista}}</h3>
       <div *ngFor="let tarea of tareas; index as i">
-        <app-tarea (click)="volverFormInfo(tarea, true)" *ngIf="tarea.lista == lista" [tareas]="tareas[i]"></app-tarea>
+        <app-tarea (click)="setVisible(tarea)" *ngIf="tarea.lista == lista" [tareas]="tareas[i]"></app-tarea>
       </div>
       <div class="base">
-        <p (click)="setVisible(true)">+ Añadir Nueva Tarea</p>
+        <p (click)="setVisible()">+ Añadir Nueva Tarea</p>
       </div>
   </div>
 </div>
@@ -14,8 +14,9 @@
   <app-formulario 
 
     (guardarForm)="leerFormulario($event)"
-    (volver)="setVisible($event)"
+    (volver)="volverFormInfo($event)"
     [info]="this.info"
+    [tareas]="this.tareas"
 
   ></app-formulario>
 </div>

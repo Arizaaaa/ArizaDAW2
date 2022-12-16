@@ -40,6 +40,19 @@ export class FormularioComponent extends AppComponent{
 
       });
 
+    } else {
+
+      this.taskForm.setValue({
+
+        id: this.tareas.length,
+        titulo: null,
+        lista: null,
+        fechaFin: null,
+        img: null,
+        usuario: null
+
+      });
+
     }
   }
 

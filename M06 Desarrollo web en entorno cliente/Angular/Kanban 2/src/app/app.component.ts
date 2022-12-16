@@ -15,39 +15,22 @@ export class AppComponent {
 
   @Input() visible:boolean;
   @Input() info:any;
+  @Input() tareas: Tarea[];
+  listas: string[] = [];
 
   leerFormulario(json: string) { 
 
     let task = JSON.parse(json);
-
     let nueva:boolean = true;
-
-    console.log(this.tareas.length);
+    console.log(task);
 
     for (let i = 0; i < this.tareas.length; i++) {
 
-      if (this.tareas[i]["id"] == task.id){
-
-        this.tareas[i] = task;
-        nueva = false;
-      }
-
+      if (this.tareas[i]["id"] == task.id) { this.tareas[i] = task; nueva = false; }
     }
 
-    if (nueva) { 
-      task.id = this.tareas.length; 
-      this.tareas = this.tareas.concat(task); 
-
-    }
-
-    console.log(task);
-
-    console.log(this.tareas);
-    
+    if (nueva) { task.id = this.tareas.length; this.tareas = this.tareas.concat(task); }    
   }
-
-  listas: string[] = [];
-  tareas: Tarea[];
   
   constructor() {
     this.visible = false;
@@ -85,7 +68,9 @@ export class AppComponent {
     this.listas.push(k_FINALIZADAS_LISTA);
   }
 
-  setVisible (value:boolean) { this.visible = value; }
+  volverFormInfo (value:boolean) { this.visible = value; }
 
-  volverFormInfo(tarea:Tarea, value:boolean) { this.visible = value; this.info = tarea; }
+  setVisible(tarea?:Tarea) { this.visible = true; this.info = tarea; }
+
+  cancelar(value:boolean) { this.visible = value; }
 }
