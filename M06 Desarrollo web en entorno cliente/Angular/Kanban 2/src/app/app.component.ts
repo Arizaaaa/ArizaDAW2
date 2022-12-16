@@ -1,3 +1,4 @@
+import { DatePipe } from '@angular/common';
 import { Component, Input } from '@angular/core';
 import { Tarea } from './models/tarea-model';
 
@@ -21,15 +22,25 @@ export class AppComponent {
   leerFormulario(json: string) { 
 
     let task = JSON.parse(json);
+    task.fechaFin = new Date(task.fechaFin);
     let nueva:boolean = true;
-    console.log(task);
 
     for (let i = 0; i < this.tareas.length; i++) {
 
-      if (this.tareas[i]["id"] == task.id) { this.tareas[i] = task; nueva = false; }
+      if (this.tareas[i]["id"] == task.id) { 
+        task.fechaFin = `${task.fechaFin.getFullYear()}-${task.fechaFin.getMonth() + 1}-${task.fechaFin.getDate()}`;
+        nueva = false; 
+        this.tareas[i] = task;
+      }
     }
 
-    if (nueva) { task.id = this.tareas.length; this.tareas = this.tareas.concat(task); }    
+    if (nueva) { task.fechaFin = `${
+      task.fechaFin.getFullYear()}-${task.fechaFin.getMonth() + 1}-${task.fechaFin.getDate()}`;
+      task.id = this.tareas.length; this.tareas = this.tareas.concat(task); 
+    }
+
+
+
   }
   
   constructor() {

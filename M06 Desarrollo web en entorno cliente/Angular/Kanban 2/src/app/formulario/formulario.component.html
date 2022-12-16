@@ -23,6 +23,10 @@
       <mat-label for="img">Url Imatge</mat-label>
       <input type="url" id="url" matInput formControlName="img">
     </mat-form-field>
+    <!-- <img src="https://cdn-icons-png.flaticon.com/512/283/283234.png" alt="" (click)="agregar()">
+    <div>
+      <img *ngFor="let user of this.users" src="{{user.img}}" alt="">
+    </div> -->
     <br>
     <button type="submit" [disabled]="!taskForm.valid" (click)="onSubmit()">Crear</button>
     <button (click)="volverForm()">Cancelar</button>

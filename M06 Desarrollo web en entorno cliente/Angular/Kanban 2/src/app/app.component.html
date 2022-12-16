@@ -4,8 +4,8 @@
       <div *ngFor="let tarea of tareas; index as i">
         <app-tarea (click)="setVisible(tarea)" *ngIf="tarea.lista == lista" [tareas]="tareas[i]"></app-tarea>
       </div>
-      <div class="base">
-        <p (click)="setVisible()">+ Añadir Nueva Tarea</p>
+      <div class="base" (click)="setVisible()">
+        <p>+ Añadir Nueva Tarea</p>
       </div>
   </div>
 </div>

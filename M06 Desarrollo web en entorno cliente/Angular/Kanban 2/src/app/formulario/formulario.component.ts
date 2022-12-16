@@ -13,6 +13,8 @@ export class FormularioComponent extends AppComponent{
   @Output() guardarForm: EventEmitter<string> = new EventEmitter<string>();
   @Output() volver: EventEmitter<boolean> = new EventEmitter<boolean>();
 
+  users: Usuario[] = [];
+
   taskForm = new FormGroup({
     id: new FormControl(),
     titulo: new FormControl('', [Validators.required]),
@@ -21,8 +23,6 @@ export class FormularioComponent extends AppComponent{
     img: new FormControl(),
     usuario: new FormControl(),
   });
-
-  users:Usuario[] = [];
 
   ngOnInit(): void {
 
@@ -56,6 +56,13 @@ export class FormularioComponent extends AppComponent{
     }
   }
 
+  userList:Usuario[] = [
+
+    {email:"aexposito@gmail.com", img:"https://campus.ilerna.es/courses/10381/files/1875269/preview", nick:"Ant Onion", alt:""},
+    {email:"mjimenez@gmail.com", img:"https://campus.ilerna.es/courses/10380/files/1869293/preview", nick:"Gui Llem", alt:""}
+
+  ];
+
   getErrorMessageTitulo() {
     if (this.taskForm.controls.titulo.hasError('required')) {
       return 'El titulo es obligatorio';
@@ -82,5 +89,10 @@ export class FormularioComponent extends AppComponent{
   volverForm() { 
     this.volver.emit(false); 
   }
+
+  // agregar() {
+  //   this.users.push(this.userList[Math.random() * 1]);
+
+  // }
 
 }
