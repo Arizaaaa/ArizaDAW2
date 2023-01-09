@@ -1,0 +1,28 @@
+<div class="card-container">
+
+  <div *ngFor="let character of this.serverCharacters">
+
+    <div class="card">
+      <!-- Aquí va toda la información del character para que se vea en formato Card -->
+      <label for="name" value>Name:</label>
+      <input type="text" [(ngModel)]="character.name" [disabled]="(character.editable) ? false : true">
+      <label *ngIf="character.show == true" for="strength">Strength:</label>
+      <input *ngIf="character.show == true" type="text" [(ngModel)]="character.strength" [disabled]="(character.editable) ? false : true">
+      <label *ngIf="character.show == true" for="agility">Agility:</label>
+      <input *ngIf="character.show == true" type="text" [(ngModel)]="character.agility" [disabled]="(character.editable) ? false : true">
+      <label *ngIf="character.show == true" for="intelligence">Intelligence:</label>
+      <input *ngIf="character.show == true" type="text" [(ngModel)]="character.intelligence" [disabled]="(character.editable) ? false : true">
+      <label *ngIf="character.show == true" for="life">Life:</label>
+      <input *ngIf="character.show == true" type="text" [(ngModel)]="character.life" [disabled]="(character.editable) ? false : true">
+      <input *ngIf="character.show == true" type="button" (click) = "mostrar = edit(character, mostrar)" value="{{character.button}}"/>
+      <input type="button" (click) = "mostrar = hide(character, mostrar)" value="{{character.button2}}"/>
+      
+    </div>
+    
+  </div>
+
+  <!-- Dentro del parágrafo va la información del Character que se está modifcando -->
+  <p> {{ mostrar }} </p>
+
+</div>
+

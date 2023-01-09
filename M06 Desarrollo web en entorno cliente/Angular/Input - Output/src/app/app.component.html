@@ -1,6 +1,0 @@
-<div class="full" *ngFor="let lista of listas">
-    <h3>{{lista}}</h3>
-    <div *ngFor="let tarea of tareas; index as i">
-      <app-tarea *ngIf="tarea.lista == lista" [tareas]="tareas[i]"></app-tarea>
-    </div>
-</div>

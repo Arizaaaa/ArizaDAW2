@@ -1,0 +1,32 @@
+<body>
+  <form class="grid-container" [formGroup]="taskForm" (ngSubmit)="onSubmit()">
+    <mat-form-field>
+      <mat-label for="titulo">Titulo</mat-label>
+      <input type="text" id="titulo" matInput formControlName="titulo">
+      <mat-error *ngIf="taskForm.invalid">{{getErrorMessageTitulo()}}</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label for="lista">Estado</mat-label>
+      <mat-select id="lista" matInput formControlName="lista">
+        <mat-option value="one">Pendientes</mat-option>
+        <mat-option value="two">Progreso</mat-option>
+        <mat-option value="three">Finalizada</mat-option>
+      </mat-select>
+      <mat-error *ngIf="taskForm.invalid">{{getErrorMessageLista()}}</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Date</mat-label>
+      <input id="date" matInput [matDatepicker]="picker" formControlName="date">
+      <mat-hint>MM/DD/YYYY</mat-hint>
+      <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label for="url">Url Imatge</mat-label>
+      <input type="url" id="url" matInput formControlName="url">
+    </mat-form-field>
+    <br>
+    <button type="submit" [disabled]="!taskForm.valid" (click)="onSubmit()">Crear</button>
+    <button (click)="volverForm()">Cancelar</button>
+  </form>
+</body>

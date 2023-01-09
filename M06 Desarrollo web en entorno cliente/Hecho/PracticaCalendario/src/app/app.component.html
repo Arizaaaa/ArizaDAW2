@@ -1,0 +1,43 @@
+<div class="festivo">
+  <h1 [ngStyle]="{'color':colorNacional}">Festiu Nacional</h1>
+  <h1 [ngStyle]="{'color':colorRegional}">Festiu Regional</h1>
+  <h1 [ngStyle]="{'color':colorLocal}">Festiu Local</h1>
+  <h1 [ngStyle]="{'color':colorCentro}">Festiu Centre</h1>
+</div>
+<div class="full">
+  <div *ngFor="let mes of calendar">
+    <h1>{{mes.nombre}}</h1>
+    <div class="tabla1">
+      <td *ngFor="let semana of mes.semana">
+        <tr>{{semana}}</tr>
+      </td>
+      <td *ngFor="let dias of mes.dias; let i = index">
+        <div *ngIf="!mes.festivos[i]">
+          <tr>{{dias}}</tr>
+        </div>
+          <div *ngIf="mes.festivos">
+            <div *ngFor="let nacional of mes.nacional">
+              <div *ngIf="dias == nacional">
+                <tr ngClass="nacional">{{dias}}</tr>
+              </div>
+            </div>
+            <div *ngFor="let regional of mes.regional">
+              <div *ngIf="dias == regional">
+                <tr ngClass="regional">{{dias}}</tr>
+              </div>
+            </div>
+            <div *ngFor="let local of mes.local">
+              <div *ngIf="dias == local">
+                <tr ngClass="local">{{dias}}</tr>
+              </div>
+            </div>
+            <div *ngFor="let centro of mes.centro">
+              <div *ngIf="dias == centro">
+                <tr ngClass="centro">{{dias}}</tr>
+              </div>
+            </div>
+          </div>
+      </td>
+    </div><br>
+  </div>
+</div>
