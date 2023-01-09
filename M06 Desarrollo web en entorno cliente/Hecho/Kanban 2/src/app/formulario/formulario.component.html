@@ -8,23 +8,25 @@
     <mat-form-field>
       <mat-label for="lista">Estado</mat-label>
       <mat-select id="lista" matInput formControlName="lista">
-        <mat-option value="one">Pendientes</mat-option>
-        <mat-option value="two">Progreso</mat-option>
-        <mat-option value="three">Finalizada</mat-option>
+        <mat-option *ngFor="let lista of this.listas" value="{{lista}}">{{lista}}</mat-option>
       </mat-select>
       <mat-error *ngIf="taskForm.invalid">{{getErrorMessageLista()}}</mat-error>
     </mat-form-field>
     <mat-form-field>
       <mat-label>Date</mat-label>
-      <input id="date" matInput [matDatepicker]="picker" formControlName="date">
+      <input id="date" matInput [matDatepicker]="picker" formControlName="fechaFin">
       <mat-hint>MM/DD/YYYY</mat-hint>
       <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>
     <mat-form-field>
-      <mat-label for="url">Url Imatge</mat-label>
-      <input type="url" id="url" matInput formControlName="url">
+      <mat-label for="img">Url Imatge</mat-label>
+      <input type="url" id="url" matInput formControlName="img">
     </mat-form-field>
+    <!-- <img src="https://cdn-icons-png.flaticon.com/512/283/283234.png" alt="" (click)="agregar()">
+    <div>
+      <img *ngFor="let user of this.users" src="{{user.img}}" alt="">
+    </div> -->
     <br>
     <button type="submit" [disabled]="!taskForm.valid" (click)="onSubmit()">Crear</button>
     <button (click)="volverForm()">Cancelar</button>

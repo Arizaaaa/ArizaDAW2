@@ -1,3 +1,4 @@
+import { DatePipe } from '@angular/common';
 import { Component, Input } from '@angular/core';
 import { Tarea } from './models/tarea-model';
 
@@ -14,16 +15,37 @@ const k_FINALIZADAS_LISTA: string = "Finalizadas";
 export class AppComponent {
 
   @Input() visible:boolean;
+  @Input() info:any;
+  @Input() tareas: Tarea[];
+  listas: string[] = [];
 
   leerFormulario(json: string) { 
-    console.log(JSON.stringify(json));
-  }
 
-  listas: string[] = [];
-  tareas: Tarea[];
+    let task = JSON.parse(json);
+    task.fechaFin = new Date(task.fechaFin);
+    let nueva:boolean = true;
+
+    for (let i = 0; i < this.tareas.length; i++) {
+
+      if (this.tareas[i]["id"] == task.id) { 
+        task.fechaFin = `${task.fechaFin.getFullYear()}-${task.fechaFin.getMonth() + 1}-${task.fechaFin.getDate()}`;
+        nueva = false; 
+        this.tareas[i] = task;
+      }
+    }
+
+    if (nueva) { task.fechaFin = `${
+      task.fechaFin.getFullYear()}-${task.fechaFin.getMonth() + 1}-${task.fechaFin.getDate()}`;
+      task.id = this.tareas.length; this.tareas = this.tareas.concat(task); 
+    }
+
+
+
+  }
   
   constructor() {
     this.visible = false;
+    
     const tareasJSON: string = `{
       "tareas": [
         { "id": 0, "lista": "${k_FINALIZADAS_LISTA}", "img":
@@ -57,6 +79,9 @@ export class AppComponent {
     this.listas.push(k_FINALIZADAS_LISTA);
   }
 
-  setVisible (value:boolean) { this.visible = value; }
+  volverFormInfo (value:boolean) { this.visible = value; }
 
+  setVisible(tarea?:Tarea) { this.visible = true; this.info = tarea; }
+
+  cancelar(value:boolean) { this.visible = value; }
 }
