@@ -8,7 +8,7 @@ const k_FINALIZADAS_LISTA: string = "Finalizadas";
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['../css/style.css']
 })
 export class AppComponent {
 
