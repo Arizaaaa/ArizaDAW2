@@ -5,7 +5,7 @@ import { Tarea } from '../models/tarea-model';
 @Component({
   selector: 'app-tarea',
   templateUrl: './tarea.component.html',
-  styleUrls: ['./tarea.component.css']
+  styleUrls: ['../../css/style.css']
 })
 export class TareaComponent implements OnInit {
 

@@ -1,0 +1,39 @@
+.full {
+  display: inline-grid;
+  border-radius: 20px;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-bottom: 15px;
+  margin-right: 10px;
+  background-color: #f5e7d7; }
+  .full h3 {
+    text-align: center; }
+
+.base {
+  background-color: #c7a87f;
+  border-radius: 20px;
+  box-shadow: 5px 5px 7px #8b8b8b; }
+  .base .imgg {
+    border-radius: 20px; }
+  .base .titulo {
+    padding-left: 10px;
+    padding-top: 5px;
+    padding-right: 10px; }
+  .base .users {
+    display: flex;
+    justify-content: space-between; }
+    .base .users .fecha {
+      padding-left: 10px; }
+    .base .users .rojo {
+      color: red; }
+    .base .users .verde {
+      color: green; }
+    .base .users .naranja {
+      color: #ff7b00; }
+    .base .users .gris {
+      color: gray; }
+    .base .users .img {
+      height: 50px;
+      width: 50px;
+      border-radius: 100%;
+      margin-right: 10px; }
